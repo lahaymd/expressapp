@@ -5,3 +5,8 @@ block content
   include links.jade
   h1= title
   p Welcome to #{title}
+  form#Login(name="",method="post",action="/adduser")
+        input#inputUserName(type="text", placeholder="username", name="username")
+        input#inputUserEmail(type="email", placeholder="useremail", name="useremail")
+        button#btnSubmit(type="submit") submit
+
