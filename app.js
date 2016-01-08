@@ -64,6 +64,7 @@ app.use(function(err, req, res, next) {
     error: {}
   });
 });
-
+console.log("hello world");
+console.log("NoDeMoN");
 
 module.exports = app;
