@@ -14,8 +14,7 @@
         return;
       }
 
-    var myForm = document.getElementById("formAddUser");
-    myForm.addEventListener("submit", checkForm, true);
+    
 
 
   }, false);

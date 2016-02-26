@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  include links.jade
+
+  h1= title
+
+  p
+    a(href="/users/new") Create new profile
+    ul
+      each user in bio
+        li
+          a(href='/users/'+ encodeURIComponent(user.name))= user.name
+      
+
+
+
+     
