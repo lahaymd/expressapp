@@ -1,6 +1,6 @@
 if (session)
 
-  span= session
+  span= session.name
 
   form(method="POST", action="/session/session")
     input(type="hidden", name="_method", value="DELETE") 

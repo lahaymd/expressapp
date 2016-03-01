@@ -1,14 +1,19 @@
 var Bio = require('./bio');
-
+var util = require('util')
 function loadUser(req, res, next) {
-	var user = req.user = Bio.findOne({'name': req.params.name}, function(err,user) {
-		 
-		if(!user) {
+
+	Bio.findOne({'name': req.params.name}, function(err, docs) {
+		var user= req.user= docs;
+
+		 console.log(util.inspect(docs)+"*****")
+ console.log("$$$$$"+util.inspect(user)+"$$$$$$$$$$")
+		if(!docs) {
 			res.send('notFound', 404)
 		} else {
 			next();
 		}
 	})
+
 }
 
 module.exports = loadUser;

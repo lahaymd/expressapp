@@ -11,8 +11,24 @@ block content
       each user in bio
         li
           a(href='/users/'+ encodeURIComponent(user.name))= user.name
-      
+  
+  p
+    ul.clearfix
+      -var i = 0
+      while (i < paginate)
+    
+       li.paginate
+         a(href="?page="+ i)= i
+           -i++
 
+
+    if (page > 0)
+     a(href="?page=" + (page - 1)) Previous
+  
+  
+      
+    if (!lastPage)
+     a(href="?page=" + (page + 1)) Next
 
 
      
