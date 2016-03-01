@@ -5,30 +5,34 @@ block content
 
   h1= title
 
-  p
+  div.table
     a(href="/users/new") Create new profile
     ul
-      each user in bio
-        li
-          a(href='/users/'+ encodeURIComponent(user.name))= user.name
+     each user in bio
+      li
+       a(href='/users/'+ encodeURIComponent(user.name))= user.name
   
-  p
-    ul.clearfix
+  p  
+
+    ul.clearfix.paginate
+      if (page > 0)
+       li
+        a(href="?page=" + (page - 1)) Previous
+      else
+       li
+        a(href="?page=" + (page - 1)).disabled Previous
       -var i = 0
       while (i < paginate)
     
-       li.paginate
-         a(href="?page="+ i)= i
-           -i++
-
-
-    if (page > 0)
-     a(href="?page=" + (page - 1)) Previous
-  
-  
-      
-    if (!lastPage)
-     a(href="?page=" + (page + 1)) Next
+       li
+        a(href="?page="+ i)= i
+           -i++ 
+      if (!lastPage)
+       li
+        a(href="?page=" + (page + 1)) Next
+      else
+       li
+        a(href="?page=" + (page + 1)).disabled Next
 
 
      
