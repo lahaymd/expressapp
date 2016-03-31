@@ -10,6 +10,7 @@ var mongo = require('mongodb');
 var mongoose = require('mongoose');
 var util = require('util');
 
+
 mongoose.connect('localhost:27017/mongoose');
 
 var monk = require('monk');

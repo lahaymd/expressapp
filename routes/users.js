@@ -49,26 +49,44 @@ router.get('/:name', loadUser, function(req, res, next){
 });
 
 router.post('/bio', notLoggedIn, function(req, res) { 
-  Bio.findOne({'username': req.body.username}, function(err, docs) {
+  // Bio.findOne({'username': req.body.username}, function(err, docs) {
   	 
-  	if (docs) {
-  		res.send('username taken');
-  	} else {
-    var newBio = new Bio();
-    	newBio.username= req.body.username;
-    	newBio.name =  req.body.name;
-    	newBio.bio = req.body.bio;
-    	newBio.password = req.body.password;
-    	newBio.email = req.body.email;
-    	req.session.user = newBio;
+  // 	if (docs) {
+  // 		res.send('username taken');
+  // 	} else {
 
-        newBio.save(function(err){
-        	if(err)
-        		throw err;
-        });
+      Bio.create(req.body, function(err) {
+      if (err) {
+        if(err.code === 11000) {
+          res.send("error code 10000"+err)
+        } else {
+          if (err.name === 'ValidationError') {
+            return res.send(Object.keys(err.errors).map(function(errField) {
+              return err.errors[errField].message; 
+            }).join('. '), 406);
+          } else {
+          next(err);
+          }
+        }
+        return; 
+      }
+    // })
+    // var newBio = new Bio();
+    // 	newBio.username= req.body.username;
+    // 	newBio.name =  req.body.name;
+    // 	newBio.bio = req.body.bio;
+    // 	newBio.password = req.body.password;
+    // 	newBio.email = req.body.email;
+    // 	req.session.user = newBio;
 
+    //     newBio.save(function(err){
+    //     	if(err)
+    //     		throw err;
+    //     });
+    req.session.user=req.body
+    console.log("SESSION"+JSON.stringify(req.session.user));
      res.redirect('/users');
-	     };
+	     // };
    });
 });
 

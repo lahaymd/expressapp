@@ -5,11 +5,19 @@ body {
 }
 ul.clearfix > li {
   display: inline;
-  padding: 10px;
-}
-.paginate {
   background-color: #ffa500;
-  margin: 4px;
+}
+.paginate > li {
+  border: solid 1px #008000;
+}
+.table {
+  height: 10rem;
+  background: #ffc0cb;
+}
+a.disabled {
+  pointer-events: none;
+  cursor: default;
+  color: #808080;
 }
 a {
   text-decoration: none;
