@@ -1,57 +1,54 @@
 extends layout
-
 block content 
- 
-  h1= title
-  p Welcome to #{title}
-  form#Login(name="",method="post",action="/adduser")
-        input#inputUserName(type="text", placeholder="username", name="username")
-        input#inputUserEmail(type="email", placeholder="useremail", name="useremail")
-        button#btnSubmit(type="submit") submit
-  p(id="lorem").
-     Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-     tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-     quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-     consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-     cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-     proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-     Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-     tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-     quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-     consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-     cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-     proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-     tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-     quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-     consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-     cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-     proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-     tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-     quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-     
+ header 
+  
+          a#home(href='localhost:3000') Home
+          div.flexcontainer
+            a(href="#" class="toggle-nav") Toggle Navigation
+            div#modal Open Modal
+     div#openModal.modalDialog
+            div 
+             include newsession.jade
+             div(class='close') X      
+     div#site-wrapper
+      div#site-canvas
+       div#site-menu
+        include session.jade
+       
+          
+             include newsession.jade
+       .lost-container
+         .lost
+             p Welcome to #{title}
+             button#ajax ajax test
+             div#result.hide 
+             button#api-test api test
+             #random-number
+         p.lost(id="lorem").
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        
+         if(session)
+          include comments
+        
+         include social-icons
 
-  h1= title
-  div.addCommentForm
-        form( method="post", action="/create")
-            div
-                div
-                    span.label Name :
-                    input(type="text", class="nameTxt", name="username")
-                div
-                    span.label Comment :
-                    textarea(name="comment")
-                div#addCommentSubmit
-                    input(type="submit", value="Save")
-  br
-  br
-  #comments
-    - each comment in comments
-      div.comment
-        div.name= comment.username
-        div.created_at= comment.created
-        br
-        div.content= comment.content 
-        hr
-     
-  include footer.jade
+
 

@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var Bio = require('./bio');
+var User = require('./user');
 var notLoggedIn = require('./not_logged_in');
 
 
@@ -10,7 +10,7 @@ router.get('/new', notLoggedIn, function(req, res) {
 
 router.post('/session', notLoggedIn, function(req, res) { 
 	
-Bio.findOne({'username': req.body.username}, function(err, docs) {
+User.findOne({'username': req.body.username}, function(err, docs) {
 		if(docs && docs.password === req.body.password) {
 			req.session.user = docs;
 			console.log("####"+req.session.cookie.expires+ "****")

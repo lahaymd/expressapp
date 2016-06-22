@@ -1,18 +1,1 @@
-$(function() {
-    var pull        = $('#pull');
-        menu        = $('nav ul');
-        menuHeight  = menu.height();
- 
-    $(pull).on('click', function(e) {
-        e.preventDefault();
-        menu.slideToggle();
-    });
-
-    $(window).resize(function(){
-    var w = $(window).width();
-    if(w > 320 && menu.is(':hidden')) {
-        menu.removeAttr('style');
-    }
-}); 
-    
-});
+$(function(){var e=$("#pull");menu=$("nav ul"),menuHeight=menu.height(),$(e).on("click",function(e){e.preventDefault(),menu.slideToggle()}),$(window).resize(function(){var e=$(window).width();e>320&&menu.is(":hidden")&&menu.removeAttr("style")})});

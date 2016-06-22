@@ -1,5 +1,5 @@
 h1= title
-form(method="POST", action="/users/bio") 
+form(method="POST" enctype="multipart/form-data" action="/users/user") 
   p
     label(for="username") Username<br />
     input#username(name="username") 
@@ -22,7 +22,11 @@ form(method="POST", action="/users/bio")
     label(for="twitter") Twitter Handle<br /> 
     input#twitter(name="twitter")
   p
+    label(for="image") Upload<br />
+    input#image(name="image" type="file")
+  p
     label(for="bio") Bio<br />
     textarea#bio(name="bio")
+
   p
     button(type="submit", value="Create") Create

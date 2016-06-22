@@ -1,8 +1,8 @@
-var Bio = require('./bio');
+var User = require('./user');
 var util = require('util')
 function loadUser(req, res, next) {
 
-	Bio.findOne({'name': req.params.name}, function(err, docs) {
+	User.findOne({'name': req.params.name}, function(err, docs) {
 		var user= req.user= docs;
 
 		 console.log(util.inspect(docs)+"*****")
