@@ -1,22 +1,7 @@
 extends layout
 block content 
- header 
-  
-          a#home(href='localhost:3000') Home
-          div.flexcontainer
-            a(href="#" class="toggle-nav") Toggle Navigation
-            div#modal Open Modal
-     div#openModal.modalDialog
-            div 
-             include newsession.jade
-             div(class='close') X      
-     div#site-wrapper
-      div#site-canvas
-       div#site-menu
-        include session.jade
-       
-          
-             include newsession.jade
+ include header.jade
+  block other
        .lost-container
          .lost
              p Welcome to #{title}

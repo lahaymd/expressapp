@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var User = require('./user');
 var notLoggedIn = require('./not_logged_in');
-//var session = require('./session');
+var session = require('./session');
 var loadUser = require('./load_user');
 var restrictUserToSelf = require('./restrict_user_to_self');
 var multer = require('multer');
@@ -123,8 +123,12 @@ console.log('filepath!!!' + JSON.stringify(req.file));
 
 
 
-router.delete('/:name', loadUser, restrictUserToSelf,  function(req, res, next) {
-	
+router.delete('/:name', loadUser, restrictUserToSelf,   function(req, res, next) {
+
+  console.log("REQ "+JSON.stringify(req.session.user))
+	  // if(err) {
+   //    return next(err);
+   //  }
 			req.user.remove();
 			req.session.destroy(); 
 			res.redirect('/');
