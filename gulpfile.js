@@ -15,6 +15,7 @@ var stylint = require('gulp-stylelint');
 var plumber = require ('gulp-plumber');
 browserSync = require('browser-sync');
 	reload = browserSync.reload;
+  //test
 
 var stylelintConfig = {
     "rules": {
