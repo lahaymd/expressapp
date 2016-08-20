@@ -18,9 +18,7 @@ router.get('/background',function ( req, res ){
  res.render( 'background-attachment'); 
 });
 
-router.get('/layout', function(req, res) {
-  res.render('layout')
-})
+
 
 router.post('/create',function ( req, res ){
   new Comment({

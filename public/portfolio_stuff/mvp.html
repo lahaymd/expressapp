@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>mvp</title>
+</head>
+<style type="text/css">
+	#child {
+		color: salmon;
+	}
+textarea{
+  margin: 20px;
+}
+  button {
+    float: left;
+    margin: 20px;
+  }
+
+</style>
+<body>
+
+<textarea name="first" id="first" cols="30" rows="10"></textarea>
+<textarea name="second" id="second" cols="30" rows="10"></textarea>
+<button id="button">difference</button>
+<button id="clear">clear</button>
+<div id="result"></div>
+
+
+
+<script>
+
+var lowerCaseAlphabet = "abcdefghijklmnopqrstuvwxyz1234567890$."; 
+var upperCaseAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"; 
+var letterCounts = new Array(); 
+var letterCounts2 = [];
+var difference= [];
+var result = document.getElementById('result');
+var diff = [];
+var first = document.getElementById('first');
+var second = document.getElementById('second');
+
+function clear() {
+  
+  first.value="";
+  second.value="";
+  result.innerHTML="";
+}
+
+function charToIndex(ch) {  
+  var ret = lowerCaseAlphabet.indexOf(ch); 
+  if (ret >= 0) return ret; 
+  return upperCaseAlphabet.indexOf(ch); 
+} 
+
+
+function recordInputLetters () { 
+  for (var j=0; j<lowerCaseAlphabet.length; j++) { 
+    letterCounts[j] = 0; 
+    letterCounts2[j] = 0;
+  } 
+  var i, charIndex; 
+  var inputText = document.getElementById('first').value;
+  for (i=0; i<inputText.length; i++) { 
+    charIndex = charToIndex(inputText.charAt(i)); 
+    if (charIndex >=0) { 
+      letterCounts[charIndex]++; 
+    } 
+  } 
+  var k, charIndex2
+var inputText2 = document.getElementById('second').value;
+  for (k=0; k<inputText2.length; k++) { 
+    charIndex2 = charToIndex(inputText2.charAt(k)); 
+    if (charIndex2 >=0) { 
+      letterCounts2[charIndex2]++; 
+    } 
+  } 
+
+
+   for (var i =0 ; i < lowerCaseAlphabet.length; i++) {
+   	  difference[i] = letterCounts2[i] - letterCounts[i]
+   }
+ if(diff.length>0){ 
+ 	  diff.length=0; 
+ 	  result.innerHTML=""
+ 	}; 
+   for(var j = 0; j < difference.length; j++) {
+   	  if(difference[j]<=0) 
+   	  	continue;
+   	   diff.push(lowerCaseAlphabet[j]+ ":" + difference[j]);
+   }
+ diff.forEach(function(element) {
+
+   	var li= document.createElement('li');
+   	li.setAttribute('id', 'child');
+   	var node = document.createTextNode(element);
+   	li.appendChild(node);
+   	result.appendChild(li);
+   })
+}
+ 
+document.getElementById('button').addEventListener('click', recordInputLetters, false)
+document.getElementById('clear').addEventListener('click', clear, false)
+
+</script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+
+
+body
+	1200px
+section, #scroll
+	position absolute
+	bottom 65px
+	top 200px
+	height 200px
+	width 160px
+	background blue
+	
+	background-position center
+	background-repeat no-repeat
+	backface-visibility hidden
+	padding 10px
+	
+	border 5px solid rgba(255,255,255,.4)
+	overflow auto
+	
+.photo
+	transition 1s
+	backface-visibility hidden
+.photo:hover
+		transform scale(2, 3) skew(20deg) rotate(90deg) translate(50px, 50px)
+		transition 1s
+		backface-visibility hidden
+#scroll:hover
+	transform rotateY(180deg)
+	backface-visibility hidden
+	
+	
+	
+pre
+	height 500px
+	white-space pre-wrap
+		
+		
+#scroll
+	background-attachment scroll
+	-webkit-backface-visibility hidden
+	backface-visibility hidden
+	
+#fixed
+	background-attachment fixed
+	left 250px
+	animation moveSection 5s ease -2s infinite alternate
+	background-image url('/images/colorado1.jpg')
+	
+#local
+	left 470px
+	background-attachment local
+	border 20px solid red
+	background-image url('/images/colorado1.jpg')
+	
+
+
+	
+	
+	
+	
