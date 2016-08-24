@@ -2,7 +2,7 @@
 var router = express.Router();
 var User = require('./user');
 var notLoggedIn = require('./not_logged_in');
-var session = require('./session');
+// var session = require('./session');
 
 router.get('/new', notLoggedIn, function(req, res) { 
 	res.render('newsession', {title: "Log Inn"});
@@ -13,15 +13,14 @@ router.get('/newuser', function(req, res) {
 })
 
 router.post('/session',  function(req, res) { 
-	console.log(req.body.password);
 User.findOne({'username': req.body.username}, function(err, docs) {
 		if(docs && docs.password === req.body.password) {
 			req.session.user = docs;
-			console.log("####"+req.session.cookie.expires+ "****")
-			console.log(req.session.user.username+ "$$$$$req.session.user.username")
-			res.redirect('/users')
+			// res.redirect('/users')
+			res.send(docs);
 		} else {
-			res.redirect('newuser')
+			// res.redirect('newuser')
+			res.send('you fucked up')
 		}
 	});
 	 });

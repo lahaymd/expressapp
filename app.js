@@ -14,13 +14,13 @@ var multer = require('multer');
 
 mongoose.connect('localhost:27017/mongoose');
 
-var monk = require('monk');
-var db = monk('localhost:27017/expressapp');
+
 
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var sessions = require('./routes/session');
+ api = require('./routes/api');
 
 var app = express();
 
@@ -56,17 +56,23 @@ app.use(session({ secret: 'anystringoftext',
 //app.use(require('stylus').middleware(__dirname + '/public'));
 app.use(express.static(path.join(__dirname, 'public')));
 // Make our db accessible to our router
-app.use(function(req,res,next){
-    req.db = db;
-    next();
-  //   console.log('cookies' + JSON.stringify(req.cookies));
-  // console.log('==================');
-  // console.log('request.session' + JSON.stringify(req.session));
-});
+// app.use(function(req,res,next){
+//     //req.db = db;
+//     next();
+//   //   console.log('cookies' + JSON.stringify(req.cookies));
+//   // console.log('==================');
+//   // console.log('request.session' + JSON.stringify(req.session));
+// });
+app.get('/', routes.index);
 
-app.use('/', routes);
-app.use('/users', users);
-app.use('/session', sessions);
+app.get('/partials/:name', routes.partials);
+ 
+// redirect all others to the index (HTML5 history)
+
+app.get('/api/posts', api.posts);
+app.get('*', routes.index);
+// app.use('/', routes);
+ //app.use('*', routes);
 
 
 // catch 404 and forward to error handler
