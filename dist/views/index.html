@@ -1,0 +1,20 @@
+<!DOCTYPE html><html ng-app="myApp"> <head><title></title><script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script><script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script><script src="/javascripts/angular-route.js"></script><script src="/javascripts/menu.js"></script><script src="/javascripts/toggle.js"></script><script src="/javascripts/global.js"></script><script src="/javascripts/app/app.module.js"></script><script src="/javascripts/app/app.config.js"></script><script src="/javascripts/app/controllers.js"></script><script src="/javascripts/app/sessions/sessions.controller.js"></script><script src="/javascripts/app/sessions/sessions.service.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><link rel="stylesheet" href="/stylesheets/style.css"></head><body><header> <a id="home" href="localhost:3000">Home</a><div class="flexcontainer"><a href="#" class="toggle-nav">Toggle Navigation</a><div id="modal">Open Modal</div></div></header><div id="openModal" class="modalDialog"><div> <body id="newsession"></body><div id="background-image"></div><form method="POST" action="/session/session"> <fieldset id="fieldset"><legend>Login</legend><label for="username">User name:</label><input id="username" name="username"><br> <label for="password">Password:</label><input id="password" type="password" name="password"><br><button id="login" type="submit" value="Log in"></button></fieldset></form><div class="close">X      </div></div></div><div id="site-wrapper"><div id="site-canvas"><div id="site-menu"><p>     </p><a href="/session/new">Login </a><span>&nbsp;or&nbsp; </span><a href="/users/new">Register</a></div><div class="lost-container"><div class="lost"><p>Welcome to </p><input type="text" ng-model="name"><div ng-bind="name"></div><div>1+2={{1+2}}</div><ng-view></ng-view><div ng-controller="myController"><div>{{person.age}}</div></div><button id="ajax">ajax test</button><div id="result" class="hide"> </div><button id="api-test">api test</button><div id="random-number"></div></div><p id="lorem" class="lost">Lorem ipsum fuck you boy dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+</p><div id="social-icons"><a href="#" class="facebook"></a><a href="#" class="twitter"></a><a href="https://github.com/lahaymd" target="_blank" class="github"></a><a href="#" class="linkedin"></a><a href="#" class="googleplus"></a></div></div></div></div></body></html>
