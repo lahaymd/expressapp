@@ -22,6 +22,9 @@ function config($routeProvider, $locationProvider) {
         when('/user', {
         	templateUrl: 'partials/user'
         }).
+        when('/user/new', {
+          templateUrl: 'partials/new'
+        }).
         otherwise({
         	redirectTo: '/'
         })
