@@ -17,7 +17,7 @@ User.findOne({'username': req.body.username}, function(err, docs) {
 		if(docs && docs.password === req.body.password) {
 			req.session.user = docs;
 			 res.redirect('/users')
-			res.send(docs);
+			res.json(docs);
 		} else {
 			// res.redirect('newuser')
 			res.send('you fucked up')

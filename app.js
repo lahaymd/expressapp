@@ -16,7 +16,6 @@ mongoose.connect('localhost:27017/mongoose');
 
 
 
-
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var sessions = require('./routes/session');

@@ -9,7 +9,7 @@ function config($routeProvider, $locationProvider) {
 });
     $routeProvider
         .when('/', {
-          templateUrl: 'partials/index',
+          templateUrl: '/partials/index',
           controller: 'AvengersController',
         
           // resolve: {
@@ -17,13 +17,16 @@ function config($routeProvider, $locationProvider) {
           // }
         }).
         when('/avengers', {
-        	templateUrl: 'partials/avengers'
+        	templateUrl: '/partials/avengers'
         }).
         when('/user', {
-        	templateUrl: 'partials/user'
+        	templateUrl: '/partials/user'
         }).
         when('/user/new', {
-          templateUrl: 'partials/new'
+          templateUrl: '/partials/new'
+        }).
+        when('/login', {
+          templateUrl: '/partials/newsession'
         }).
         otherwise({
         	redirectTo: '/'
