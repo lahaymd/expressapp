@@ -1,0 +1,43 @@
+//- extends layout
+
+//- block content
+  //- header 
+  
+  //-         a#home(href='localhost:3000') Home
+  //-         div.flexcontainer
+  //-           a(href="#" class="toggle-nav") Toggle Navigation
+  //-           div#modal Open Modal
+  //-    div#openModal.modalDialog
+  //-           div 
+  //-            include newsession.jade
+  //-            div(class='close') X      
+  //-    div#site-wrapper
+  //-     div#site-canvas
+  //-      div#site-menu
+  //-       include session.jade
+       
+          
+  //-            include newsession.jade  
+  
+
+       //- #profile-container
+       //-   h1#users= title
+       //-   div= session.username
+       //-   div.animate 
+       //-   a.block(href="/users/new") Create new profile
+       div.table
+         ul
+          each user in users
+           li
+            a(href='/users/'+ encodeURIComponent(user.name))= user.name
+            a(href='#' class='linkdeleteuser' rel=user.name) delete
+            a= user.gender
+            a= user.email
+            img(src='/'+ user.image.substring(7,user.image.length) )
+        li(ng-repeat='user in users')
+          a(href='/users'+ encodeURIComponent(user.name)) {{user.name}}
+        
+   
+       //- include pagination
+
+  

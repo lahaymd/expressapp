@@ -1,0 +1,1 @@
+<div ng-controller="dataController"><input type="text" ng-model="test"/><p>Create new profile {{mongoStuff.length}}</p><ul> <li ng-repeat="stuff in arrFromMyObj  | orderBy : &quot;-name&quot; | filter: test ">{{stuff.name | uppercase}} {{stuff.password}} </li></ul></div>

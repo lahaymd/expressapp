@@ -1,1 +1,0 @@
-angular.module("myApp").controller("myController",function(e){e.person={name:"Michael",age:34}});

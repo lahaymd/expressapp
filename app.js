@@ -19,7 +19,8 @@ mongoose.connect('localhost:27017/mongoose');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var sessions = require('./routes/session');
- api = require('./routes/api');
+var api = require('./routes/api');
+var rest = require('./routes/rest');
 
 var app = express();
 
@@ -54,6 +55,7 @@ app.use(session({ secret: 'anystringoftext',
 
 //app.use(require('stylus').middleware(__dirname + '/public'));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/scripts', express.static(path.join(__dirname, '/node_modules/angular/dist')));
 // Make our db accessible to our router
 // app.use(function(req,res,next){
 //     //req.db = db;
@@ -69,6 +71,8 @@ app.get('/partials/:name', routes.partials);
 // redirect all others to the index (HTML5 history)
 
 app.get('/api/posts', api.posts);
+app.get('/api/user', rest);
+
 app.get('*', routes.index);
 // app.use('/', routes);
  //app.use('*', routes);
