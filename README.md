@@ -1,5 +1,8 @@
 
-express app
-Simple express app with mongodb
-=======
+#MEAN APP
+* Registration
+* Login
+* Update
+* Delete
+* Upload pic
 
