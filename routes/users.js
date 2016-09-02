@@ -64,10 +64,10 @@ router.get('/:name', loadUser, function(req, res, next){
 
 router.post('/user', notLoggedIn, upload.single('image'), function(req, res) { 
     var array = req.body;
-    array.image = req.file.path;
-      User.create(array, function(err, file, docs) {
+    var array.image = req.file.path;
+      User.create(array, function(err, docs) {
         req.session.user=req.body;
-        res.redirect('/users');
+        console.log(docs)
 	    });
 });
 
