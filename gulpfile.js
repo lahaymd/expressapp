@@ -21,6 +21,7 @@ var rename = require('gulp-rename');
 var del = require('del');
 var ngAnnotate = require('gulp-ng-annotate');
 var jade = require('gulp-jade');
+var imagemin = require('gulp-imagemin');
 
 
 /**
@@ -123,7 +124,7 @@ gulp.task('scripts', function() {
     .pipe(concat('scripts.js'))
     .pipe(rename({suffix: '.min'}))
     .pipe(uglify())
-    .pipe(gulp.dest('public/distribution'))
+    .pipe(gulp.dest('public/distribution/scripts'))
     .pipe(reload({stream: true}));
 })
 
@@ -167,7 +168,11 @@ gulp.task('default', ['browser-sync'], function () {
 
 
 
-
+gulp.task('imagemin', function() {
+    return gulp.src('public/images/*')
+    .pipe(imagemin({ progressive: true }))
+    .pipe(gulp.dest('public/distribution/images'));
+});
 
 
 

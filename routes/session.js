@@ -16,7 +16,7 @@ router.post('/session',  function(req, res) {
 User.findOne({'username': req.body.username}, function(err, docs) {
 		if(docs && docs.password === req.body.password) {
 			req.session.user = docs;
-			 res.redirect('/users')
+			 
 			res.json(docs);
 		} else {
 			// res.redirect('newuser')

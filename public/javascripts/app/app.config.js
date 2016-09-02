@@ -34,6 +34,12 @@ function config($routeProvider, $locationProvider) {
         when('/background-attachment', {
           templateUrl: '/partials/background-attachment'
         }).
+        when('/newsession', {
+          templateUrl: '/partials/newsession'
+        }).
+        when('rest/session', {
+          templateUrl: 'partials/user'
+        }).
         otherwise({
         	redirectTo: '/'
         })

@@ -18,4 +18,18 @@ router.get('/api/user', function(req, res) {
 	})
 })
 
+router.get('/session',  function(req, res) { 
+User.findOne({'username': req.body.username}, function(err, docs) {
+		if(docs && docs.password === req.body.password) {
+			req.session.user = docs;
+			 
+			res.json(docs);
+		} else {
+			// res.redirect('newuser')
+			res.send('you fucked up')
+		}
+	});
+	 });
+
+
 module.exports = router;

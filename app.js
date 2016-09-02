@@ -10,28 +10,23 @@ var mongo = require('mongodb');
 var mongoose = require('mongoose');
 var util = require('util');
 var multer = require('multer');
-
-
 mongoose.connect('localhost:27017/mongoose');
-
-
-
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var sessions = require('./routes/session');
 var api = require('./routes/api');
 var rest = require('./routes/rest');
-
 var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
+app.use(express.static(path.join(__dirname, 'public')));
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
- app.use(bodyParser.json());
- app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(methodOverride(function(req, res){
   if (req.body && typeof req.body === 'object' && '_method' in req.body) {
     // look in urlencoded POST bodies and delete it
@@ -53,30 +48,12 @@ app.use(session({ secret: 'anystringoftext',
     next();
   });
 
-//app.use(require('stylus').middleware(__dirname + '/public'));
-app.use(express.static(path.join(__dirname, 'public')));
-app.use('/scripts', express.static(path.join(__dirname, '/node_modules/angular/dist')));
-// Make our db accessible to our router
-// app.use(function(req,res,next){
-//     //req.db = db;
-//     next();
-//   //   console.log('cookies' + JSON.stringify(req.cookies));
-//   // console.log('==================');
-//   // console.log('request.session' + JSON.stringify(req.session));
-// });
 app.get('/', routes.index);
-
 app.get('/partials/:name', routes.partials);
- 
-// redirect all others to the index (HTML5 history)
-
 app.get('/api/posts', api.posts);
 app.get('/api/user', rest);
-
+app.get('/session', rest)
 app.get('*', routes.index);
-// app.use('/', routes);
- //app.use('*', routes);
-
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -84,8 +61,6 @@ app.use(function(req, res, next) {
   err.status = 404;
   next(err);
 });
-
-// error handlers
 
 // development error handler
 // will print stacktrace
@@ -108,8 +83,5 @@ app.use(function(err, req, res, next) {
     error: {}
   });
 });
-
-
-
 
 module.exports = app;
