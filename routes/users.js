@@ -87,11 +87,11 @@ console.log('filepath!!!' + JSON.stringify(req.file));
     var array = req.body;
     array.image = req.file.path;
     console.log('array ' + JSON.stringify(array));
-      User.create(array,   function(err, file, docs) {
+      User.create(array,   function(err, docs) {
         
         
-        console.log('file' + file);
-        console.log('docs' + docs);
+        
+        console.log('docs' + JSON.stringify(docs));
       // if (err) {
       //   if(err.code === 11000) {
       //     res.send("error code 10000"+err)
