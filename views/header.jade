@@ -1,18 +1,19 @@
 header 
-  
+     
           a#home(href='/') Home
           div.flexcontainer
             a(href="#" class="toggle-nav") Toggle Navigation
             a(href='user') User
             a(href='test') Test
             a(href='avengers') Avengers
-            a(href='newsession') New session
-            a(href='user/new') Register
+            a(href='new') New session
+            a(href='register') Register
             div#modal Open Modal
      div#openModal.modalDialog
             div 
              include newsession.jade
              div(class='close') X      
+     
      div#site-wrapper
       div#site-canvas
        div#site-menu

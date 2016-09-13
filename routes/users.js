@@ -64,7 +64,7 @@ router.get('/:name', loadUser, function(req, res, next){
 
 router.post('/user', notLoggedIn, upload.single('image'), function(req, res) { 
     var array = req.body;
-    var array.image = req.file.path;
+    array.image = req.file.path;
       User.create(array, function(err, docs) {
         req.session.user=req.body;
         console.log(docs)

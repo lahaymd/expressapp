@@ -22,7 +22,7 @@ function config($routeProvider, $locationProvider) {
         when('/user', {
         	templateUrl: '/partials/user'
         }).
-        when('/user/new', {
+        when('/new', {
           templateUrl: '/partials/new'
         }).
         when('/login', {
@@ -34,8 +34,9 @@ function config($routeProvider, $locationProvider) {
         when('/background-attachment', {
           templateUrl: '/partials/background-attachment'
         }).
-        when('/newsession', {
-          templateUrl: '/partials/newsession'
+        when('/register', {
+          templateUrl: '/partials/register',
+          controller: 'RegisterController'
         }).
         when('rest/session', {
           templateUrl: 'partials/user'

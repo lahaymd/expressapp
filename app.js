@@ -16,6 +16,7 @@ var users = require('./routes/users');
 var sessions = require('./routes/session');
 var api = require('./routes/api');
 var rest = require('./routes/rest');
+var apitest = require('./routes/apitest');
 var app = express();
 
 // view engine setup
@@ -47,7 +48,7 @@ app.use(session({ secret: 'anystringoftext',
     res.locals.session = req.session.user;
     next();
   });
-
+app.use('/user', apitest);
 app.get('/', routes.index);
 app.get('/partials/:name', routes.partials);
 app.get('/api/posts', api.posts);

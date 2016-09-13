@@ -193,6 +193,11 @@ rupture.scale-names: 'xs''s''m''l''xl''hd',
     color: #0074d9;
   }
 }
+.hero {
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+}
 .flex {
   display: -webkit-box;
   display: -moz-box;
@@ -444,14 +449,15 @@ pre {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
+.hero {
+  width: 100%;
+  background-color: #d13f19;
+  height: 600px;
+  background-image: url("/images/photoshop.JPG");
+  position: absolute;
+}
 body {
   padding-top: 80px;
-  background: #4fadff;
-  background: #004682 -webkit-linear-gradient(270deg, #4fadff, #004682) repeat-x;
-  background: #004682 -moz-linear-gradient(270deg, #4fadff, #004682) repeat-x;
-  background: #004682 -o-linear-gradient(270deg, #4fadff, #004682) repeat-x;
-  background: #004682 -ms-linear-gradient(270deg, #4fadff, #004682) repeat-x;
-  background: #004682 linear-gradient(180deg, #4fadff, #004682) repeat-x;
 }
 header {
   display: -webkit-box;

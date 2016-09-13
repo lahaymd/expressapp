@@ -15,18 +15,6 @@ angular.module('myApp')
         return deferred.promise;
       }
 		}
-	})
-	.controller('myController', function($scope) {
-		$scope.person= {name: 'Michael', age: 35}
-	}).	
-	controller('restController', function($scope) {
-		$scope.rests = [
-			{name: 'Mike', age: 34},
-			{name: 'Joe', age: 34},
-			{name: 'Jake', age: 2},
-			{name: 'Charlie', age: 4},
-		];
-
 	}).
 	controller('dataController', ['$scope','myFactory', function($scope, myFactory ) {
 		$scope.mongoStuff = {};
@@ -41,4 +29,31 @@ myFactory.getMongoStuff()
 	});
    
 
-}])
+}]).controller('RegisterController',
+  ['$scope', '$location', 'AuthService',
+  function ($scope, $location, AuthService) {
+
+    $scope.register = function () {
+
+      // initial values
+      $scope.error = false;
+      $scope.disabled = true;
+
+      // call register from service
+      AuthService.register($scope.registerForm.username, $scope.registerForm.password)
+        // handle success
+        .then(function () {
+          $scope.disabled = false;
+          $scope.registerForm = {};
+        })
+        // handle error
+        .catch(function () {
+          $scope.error = true;
+          $scope.errorMessage = "Something went wrong!";
+          $scope.disabled = false;
+          $scope.registerForm = {};
+        });
+
+    };
+
+}]);
