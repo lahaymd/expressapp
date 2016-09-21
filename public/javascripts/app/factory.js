@@ -22,15 +22,27 @@ angular.module('myApp').factory('AuthService',
 
     // create user variable
     var user = null;
-
     // return available functions for use in the controllers
     return ({
       isLoggedIn: isLoggedIn,
       getUserStatus: getUserStatus,
       login: login,
       logout: logout,
-      register: register
+      register: register,
+      getUser: getUser
     });
+
+    function getUser() {
+      var deferred = $q.defer();
+      $http.get('/api/user/users')
+        .success(function(users) {
+          deferred.resolve(users)
+        })
+        .error(function(error) {
+          deferred.reject(error +'!')
+        })
+        return deferred.promise;
+    }
 
     function isLoggedIn() {
       if(user) {
@@ -109,25 +121,22 @@ angular.module('myApp').factory('AuthService',
     }
 
     function register(username, password) {
+     
 
+                  
       // create a new instance of deferred
       var deferred = $q.defer();
 
       // send a post request to the server
-      $http.post('/user/register',
-        {username: username, password: password})
+      $http.post('/api/user/users', {username: username, password: password})
         // handle success
-        .success(function (data, status) {
-          if(status === 200 && data.status){
-            deferred.resolve();
-          } else {
-            deferred.reject();
-          }
-        })
-        // handle error
-        .error(function (data) {
-          deferred.reject();
+        .success(function (response) {
+            deferred.resolve(response);
+         
+        }).error (function(response) {
+          defer.reject(response)
         });
+        
 
       // return promise object
       return deferred.promise;

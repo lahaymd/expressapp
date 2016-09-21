@@ -31,13 +31,10 @@ gulp.task('templates', function() {
     return gulp.src('views/**/*.jade')
         .pipe(plumber())
         .pipe(jade())
-        .pipe(gulp.dest('dist/views'))
+        // .pipe(gulp.dest('dist/views'))
         .pipe(reload({stream: true}));
 });
 
-browserSync = require('browser-sync');
-	reload = browserSync.reload;
-  //test
 
 var stylelintConfig = {
     "rules": {
@@ -161,7 +158,7 @@ gulp.task('bs-reload', function () {
 });
 
 gulp.task('default', ['browser-sync'], function () {
-  gulp.watch('public/javascripts/**/*.js',   ['scripts', reload]);
+  gulp.watch('**/*.js',   ['scripts', reload]);
   gulp.watch('public/stylesheets/**/*.styl',  ['styles']);
   gulp.watch('views/**/*.jade', ['jade-watch']);
 });

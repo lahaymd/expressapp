@@ -1,5 +1,7 @@
-h1= title
-form(ng-submit='register()') 
+{{test}}
+{{registerForm}}
+
+form( name='myForm' ng-model="myForm" ng-submit='register()') 
   p
     label(for="username") Username<br />
     input#username(name="username" ng-model='registerForm.username' required) 
@@ -8,3 +10,5 @@ form(ng-submit='register()')
     input#password(name="password" ng-model='registerForm.password' required) 
   p
     button(type="submit", value="Create") Create
+//- ul
+//-   li(ng-repeat='stuff in')

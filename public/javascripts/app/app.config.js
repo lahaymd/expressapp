@@ -11,6 +11,7 @@ function config($routeProvider, $locationProvider) {
         .when('/', {
           templateUrl: '/partials/index',
           controller: 'AvengersController',
+          controllerAs: 'vm'
         
           // resolve: {
           //   moviesPrepService: moviesPrepService
@@ -38,8 +39,12 @@ function config($routeProvider, $locationProvider) {
           templateUrl: '/partials/register',
           controller: 'RegisterController'
         }).
-        when('rest/session', {
-          templateUrl: 'partials/user'
+        when('/rest/session', {
+          templateUrl: '/partials/user'
+        }).
+        when('/user/users', {
+          templateUrl: '/partials/users',
+          controller: 'UserController'
         }).
         otherwise({
         	redirectTo: '/'

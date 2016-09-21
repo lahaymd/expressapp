@@ -1,5 +1,5 @@
 var express = require('express');
-var methodOverride = require('method-override')
+var methodOverride = require('method-override');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
@@ -48,7 +48,7 @@ app.use(session({ secret: 'anystringoftext',
     res.locals.session = req.session.user;
     next();
   });
-app.use('/user', apitest);
+app.use('/api/user/users', apitest);
 app.get('/', routes.index);
 app.get('/partials/:name', routes.partials);
 app.get('/api/posts', api.posts);
