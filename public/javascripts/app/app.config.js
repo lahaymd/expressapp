@@ -2,56 +2,68 @@ angular
     .module('myApp')
     .config(config);
 
-function config($routeProvider, $locationProvider) {
-	       $locationProvider.html5Mode({
-  enabled: true,
-  requireBase: false
-});
-    $routeProvider
-        .when('/', {
+function config($stateProvider, $urlRouterProvider, $locationProvider) {
+	       $urlRouterProvider.otherwise('/');
+         $locationProvider.html5Mode(true);
+    $stateProvider
+        .state('home', {
+          url: '/',
           templateUrl: '/partials/index',
           controller: 'AvengersController',
           controllerAs: 'vm'
-        
-          // resolve: {
-          //   moviesPrepService: moviesPrepService
-          // }
+     
         }).
-        when('/avengers', {
+        state('avengers', {
+          url: '/avengers',
         	templateUrl: '/partials/avengers'
         }).
-        when('/user', {
-        	templateUrl: '/partials/user'
+        state('comments', {
+          url: '/comments',
+          templateUrl: '/partials/comments'
         }).
-        when('/new', {
-          templateUrl: '/partials/new'
+        state('user', {
+          url: '/user',
+        	templateUrl: '/partials/user',
+          controller: 'DataController',
+          controllerAs: 'vm'
         }).
-        when('/login', {
-          templateUrl: '/partials/newsession'
-        }).
-        when('/test', {
-          templateUrl: '/partials/test'
-        }).
-        when('/background-attachment', {
-          templateUrl: '/partials/background-attachment'
-        }).
-        when('/register', {
-          templateUrl: '/partials/register',
-          controller: 'RegisterController'
-        }).
-        when('/rest/session', {
-          templateUrl: '/partials/user'
-        }).
-        when('/user/users', {
+        state('users', {
+          url: '/users',
           templateUrl: '/partials/users',
           controller: 'UserController'
         }).
-        otherwise({
-        	redirectTo: '/'
+        state('users.detail', {
+          url: '/:id',
+          templateUrl: '/partials/selecteduser',
+          controller: 'ShowUserController'
+
+        }).
+        state('new', {
+          url: '/new',
+          templateUrl: '/partials/new'
+        }).
+        state('login', {
+          url: '/url',
+          templateUrl: '/partials/newsession'
+        }).
+        state('test', {
+          url: '/test',
+          templateUrl: '/partials/test'
+        }).
+        state('background-attachment', {
+          url: '/background-attachment',
+          templateUrl: '/partials/background-attachment'
+        }).
+        state('register', {
+          url: '/register',
+          templateUrl: '/partials/register',
+          controller: 'RegisterController'
+        }).
+        state('api', {
+          url: '/api/user',
+          templateUrl: '/partials/users',
+          controller: 'UserController'
         })
         
 }
 
-// function moviesPrepService(movieService) {
-//     return movieService.getMovies();
-// }

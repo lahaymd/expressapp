@@ -1,79 +1,71 @@
 
-/*
- * Serve JSON to our AngularJS client
- */
+var express = require('express');
+var router = express.Router();
+var Auth = require('../models/auth.js');
 
-// For a real app, you'd make database requests here.
-// For this example, "data" acts like an in-memory "database"
-var data = {
-  "posts": [
-    {
-      "title": "Lorem ipsum",
-      "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    },
-    {
-      "title": "Sed egestas",
-      "text": "Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metus libero eu augue. Morbi purus libero, faucibus adipiscing, commodo quis, gravida id, est. Sed lectus."
+router.post('/', function(req, res) { 
+ 
+   Auth.create({username: req.body.username, password: req.body.password}, function(err, user) {
+  if (err) return console.error(err);
+  console.log(user);
+  res.json(user);
+});
+});
+
+router.get('/', function(req, res) {
+  Auth.find({}, function(err,docs) {
+    res.json(docs)
+  })
+})
+
+router.get('/:id', function(req, res) {
+  Auth.findOne({_id: req.params.id}, function(err,docs) {
+    res.json(docs)
+    console.log(docs +'!')
+  })
+})
+
+
+router.post('/login', function(req, res, next) {
+  passport.authenticate('local', function(err, user, info) {
+    if (err) {
+      return next(err);
     }
-  ]
-};
-
-// GET
-
-exports.posts = function (req, res) {
-  var posts = [];
-  data.posts.forEach(function (post, i) {
-    posts.push({
-      id: i,
-      title: post.title,
-      text: post.text.substr(0, 50) + '...'
+    if (!user) {
+      return res.status(401).json({
+        err: info
+      });
+    }
+    req.logIn(user, function(err) {
+      if (err) {
+        return res.status(500).json({
+          err: 'Could not log in user'
+        });
+      }
+      res.status(200).json({
+        status: 'Login successful!'
+      });
     });
-  });
-  res.json({
-    posts: posts
-  });
-};
+  })(req, res, next);
+});
 
-exports.post = function (req, res) {
-  var id = req.params.id;
-  if (id >= 0 && id < data.posts.length) {
-    res.json({
-      post: data.posts[id]
+router.get('/logout', function(req, res) {
+  req.logout();
+  res.status(200).json({
+    status: 'Bye!'
+  });
+});
+
+router.get('/status', function(req, res) {
+  if (!req.isAuthenticated()) {
+    return res.status(200).json({
+      status: false
     });
-  } else {
-    res.json(false);
   }
-};
+  res.status(200).json({
+    status: true
+  });
+});
 
-// POST
 
-exports.addPost = function (req, res) {
-  data.posts.push(req.body);
-  res.json(req.body);
-};
-
-// PUT
-
-exports.editPost = function (req, res) {
-  var id = req.params.id;
-
-  if (id >= 0 && id < data.posts.length) {
-    data.posts[id] = req.body;
-    res.json(true);
-  } else {
-    res.json(false);
-  }
-};
-
-// DELETE
-
-exports.deletePost = function (req, res) {
-  var id = req.params.id;
-
-  if (id >= 0 && id < data.posts.length) {
-    data.posts.splice(id, 1);
-    res.json(true);
-  } else {
-    res.json(false);
-  }
-};
+module.exports = router;

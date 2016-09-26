@@ -198,6 +198,9 @@ rupture.scale-names: 'xs''s''m''l''xl''hd',
   -moz-background-size: cover;
   background-size: cover;
 }
+.active {
+  color: #b10dc9;
+}
 .flex {
   display: -webkit-box;
   display: -moz-box;
@@ -497,9 +500,6 @@ header a,
 header div {
   display: inline-block;
   padding: 20px;
-}
-header :not(:first-child) {
-  color: #d13f19;
 }
 #home {
   margin-right: auto;
@@ -983,9 +983,6 @@ li a {
 }
 .hide {
   display: none;
-}
-.toggle-nav {
-  color: #fff;
 }
 @-moz-keyframes moveSection {
   0% {

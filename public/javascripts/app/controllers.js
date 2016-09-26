@@ -16,20 +16,16 @@ angular.module('myApp')
       }
 		}
 	}).
-	controller('dataController', ['$scope','myFactory', function($scope, myFactory ) {
-		$scope.mongoStuff = {};
-myFactory.getMongoStuff()
-  .then(function (components) {
-    $scope.mongoStuff = components;
-    $scope.arrFromMyObj = Object.keys($scope.mongoStuff).map(function(key) {
-    return $scope.mongoStuff[key];
-  });
-  }, function (error) {
-    console.error(error);
-	});
+	controller('DataController',  function( ) {
+    var vm = this;
+		vm.mongoStuff =[
+                          {name: 'Jake', password: '123'},
+                          {name: 'MIke', password: 'password'}
+                        ] ;
+
    
 
-}]).controller('RegisterController',
+}).controller('RegisterController',
   ['$scope', '$location', 'AuthService',
   function ($scope, $location, AuthService) {
 
@@ -69,4 +65,38 @@ myFactory.getMongoStuff()
     }, function(error) {
       console.log(error)
     })
+}]).controller('ShowUserController', ['$scope', '$stateParams', 'AuthService', function($scope, $stateParams, AuthService) {
+      $scope.selectedUser = {};
+      AuthService.find($stateParams.id)
+        .then(function(user) {
+          $scope.selectedUser = user;
+          console.log(user,'!!!')
+        }, function(error) {
+          console.log(error);
+        })
+
 }])
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

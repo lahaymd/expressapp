@@ -1,13 +1,14 @@
 header 
      
-          a#home(href='/') Home
+          a#home(ui-sref='') Home
           div.flexcontainer
-            a(href="#" class="toggle-nav") Toggle Navigation
-            a(href='user') User
-            a(href='test') Test
-            a(href='avengers') Avengers
-            a(href='new') New session
-            a(href='register') Register
+            a(ui-sref='user' ui-sref-active='active') User
+            a(ui-sref='' ui-sref-active='active') Toggle Navigation
+            a(ui-sref='users' ui-sref-active='active') Users
+            a(ui-sref='test' ui-sref-active='active') Test
+            a(ui-sref='avengers' ui-sref-active='active') Avengers
+            a(ui-sref='new' ui-sref-active='active') New session
+            a(ui-sref='register' ui-sref-active='active') Register
             div#modal Open Modal
      div#openModal.modalDialog
             div 

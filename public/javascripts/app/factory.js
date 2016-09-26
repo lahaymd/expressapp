@@ -1,20 +1,4 @@
-// angular.module('myApp')
-// 	.factory('myFactory', function($q, $http) {
-// 		return {
-// 			getMongoStuff: function () {
-//         		var deferred = $q.defer(),
-//           		httpPromise = $http.get('/api/user');
-//  				httpPromise.success(function (components) {
-//           			deferred.resolve(components);
-//         		})
-//           			.error(function (error) {
-//            				console.error('Error: ' + error);
-//           			});
- 
-//         		return deferred.promise;
-//       		}
-// 		}
-// 	})
+
 
 angular.module('myApp').factory('AuthService',
   ['$q', '$timeout', '$http',
@@ -29,12 +13,26 @@ angular.module('myApp').factory('AuthService',
       login: login,
       logout: logout,
       register: register,
-      getUser: getUser
+      getUser: getUser,
+      find: find
     });
+
+    function find(id) {
+      var deferred = $q.defer();
+      $http.get('/api/users/' + id)
+        .success(function(user) {
+          deferred.resolve(user)
+        })
+        .error(function(error) {
+          deferred.reject(error +'!')
+        })
+        return deferred.promise;
+
+    }
 
     function getUser() {
       var deferred = $q.defer();
-      $http.get('/api/user/users')
+      $http.get('/api/users')
         .success(function(users) {
           deferred.resolve(users)
         })
@@ -128,7 +126,7 @@ angular.module('myApp').factory('AuthService',
       var deferred = $q.defer();
 
       // send a post request to the server
-      $http.post('/api/user/users', {username: username, password: password})
+      $http.post('/api/users', {username: username, password: password})
         // handle success
         .success(function (response) {
             deferred.resolve(response);
