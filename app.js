@@ -12,10 +12,7 @@ var util = require('util');
 var multer = require('multer');
 
 
-mongoose.connect('localhost:27017/mongoose');
-
-// var monk = require('monk');
-// var db = monk('localhost:27017/expressapp');
+mongoose.connect('127.0.0.1:27017/mongoose');
 
 
 var routes = require('./routes/index');
@@ -55,14 +52,7 @@ app.use(session({ secret: 'anystringoftext',
 
 //app.use(require('stylus').middleware(__dirname + '/public'));
 app.use(express.static(path.join(__dirname, 'public')));
-// Make our db accessible to our router
-app.use(function(req,res,next){
-    req.db = db;
-    next();
-  //   console.log('cookies' + JSON.stringify(req.cookies));
-  // console.log('==================');
-  // console.log('request.session' + JSON.stringify(req.session));
-});
+
 
 app.use('/', routes);
 app.use('/users', users);
