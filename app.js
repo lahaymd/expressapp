@@ -14,8 +14,8 @@ var multer = require('multer');
 
 mongoose.connect('localhost:27017/mongoose');
 
-var monk = require('monk');
-var db = monk('localhost:27017/expressapp');
+// var monk = require('monk');
+// var db = monk('localhost:27017/expressapp');
 
 
 var routes = require('./routes/index');
