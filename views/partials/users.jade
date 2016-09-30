@@ -1,0 +1,6 @@
+ul
+  li(ng-repeat= 'user in userlist')
+    a(ui-sref="users.detail({id : user._id})") {{user.username}} {{user._id}}
+my-directive(bar='3') transclusion
+my-directive
+ui-view

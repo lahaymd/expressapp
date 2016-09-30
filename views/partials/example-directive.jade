@@ -1,0 +1,11 @@
+
+h1 This is the template for the example-directive.jade file
+input(type='text'  ng-model='name')
+button(ng-click='someMeth({message:name})') Click me
+{{name}}
+div(ng-if='name=="foo"') name is foo
+div(ng-show='name.length== 3') length is three
+div(ng-hide='name.length==3') length is not three
+button( ng-click='dial()') click me
+div {{flavor}}
+input(type='text' ng-model='flavor')
