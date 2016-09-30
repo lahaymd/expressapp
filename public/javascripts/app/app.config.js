@@ -63,6 +63,11 @@ function config($stateProvider, $urlRouterProvider, $locationProvider) {
           url: '/api/user',
           templateUrl: '/partials/users',
           controller: 'UserController'
+        }).
+        state('directive', {
+          url: '/directive',
+          templateUrl: '/partials/directive',
+          controller: 'ExampleController'
         })
         
 }

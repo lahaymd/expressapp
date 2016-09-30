@@ -1,9 +1,10 @@
 header 
      
-          a#home(ui-sref='') Home
+          a#home(ui-sref='home') Home
           div.flexcontainer
+            a(ui-sref='directive' ui-sref-active='active') DIRECTIVE
             a(ui-sref='user' ui-sref-active='active') User
-            a(ui-sref='' ui-sref-active='active') Toggle Navigation
+            a(href='#' class='toggle-nav') Toggle Navigation
             a(ui-sref='users' ui-sref-active='active') Users
             a(ui-sref='test' ui-sref-active='active') Test
             a(ui-sref='avengers' ui-sref-active='active') Avengers

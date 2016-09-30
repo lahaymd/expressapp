@@ -7,7 +7,7 @@ angular.module('myApp').factory('AuthService',
     // create user variable
     var user = null;
     // return available functions for use in the controllers
-    return ({
+    var service = {
       isLoggedIn: isLoggedIn,
       getUserStatus: getUserStatus,
       login: login,
@@ -15,7 +15,9 @@ angular.module('myApp').factory('AuthService',
       register: register,
       getUser: getUser,
       find: find
-    });
+    };
+
+    return service;
 
     function find(id) {
       var deferred = $q.defer();
