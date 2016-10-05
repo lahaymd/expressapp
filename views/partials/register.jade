@@ -1,14 +1,13 @@
-{{test}}
-{{registerForm}}
-
-form( name='myForm' ng-model="myForm" ng-submit='register()') 
-  p
-    label(for="username") Username<br />
-    input#username(name="username" ng-model='registerForm.username' required) 
-  p
-    label(for="password") Password<br />
-    input#password(name="password" ng-model='registerForm.password' required) 
-  p
-    button(type="submit", value="Create") Create
-//- ul
-//-   li(ng-repeat='stuff in')
+.container.fluid
+	div.panel.panel-primary
+		.panel-heading
+			h3.panel-title Register
+		.panel-body
+			form( name='myForm' ng-model="myForm" ng-submit='register()') 
+				.form-group
+					label(for="username") Username<br />
+					input#username.form-control(name="username" ng-model='registerForm.username' required) 
+				.form-group
+					label(for="password") Password<br />
+					input#password.form-control(name="password" ng-model='registerForm.password' required) 
+				button(type="submit", value="Create" class='btn btn-default') Create

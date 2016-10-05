@@ -1,5 +1,0 @@
-input(type='text' ng-model='test')
-p Create new profile {{vm.mongoStuff.length}}
-ul  
-  li(ng-repeat='stuff in vm.mongoStuff  | orderBy : "-name" | filter: test ') {{stuff.name | uppercase}} {{stuff.password}} {{stuff._id}}
-    a(href='#') {{stuff.name}}

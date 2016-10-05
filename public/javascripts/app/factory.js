@@ -14,10 +14,24 @@ angular.module('myApp').factory('AuthService',
       logout: logout,
       register: register,
       getUser: getUser,
-      find: find
+      find: find,
+      remove: remove
     };
 
     return service;
+
+    function remove(id) {
+
+      var deferred = $q.defer();
+      $http.delete('api/users/' + id)
+      .success(function(user) {
+        deferred.resolve(user)
+      })
+      .error(function(error) {
+        deferred.reject(error + '!!')
+      })
+      return deferred.promise;
+    }
 
     function find(id) {
       var deferred = $q.defer();
