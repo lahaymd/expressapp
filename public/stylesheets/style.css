@@ -1,0 +1,9 @@
+[ui-view].ng-enter {
+  animation: fadeInUp 1s;
+}
+[ui-view].ng-leave {
+  animation: fadeOutDown 1s;
+}
+.ui-view.ng-enter {
+  animation: fadeInUp 1s;
+}
