@@ -7,15 +7,16 @@
 							th Username 
 							th User ID 
 							th delete
-							th Password
+							th Edit
 						tbody
 							tr(ng-repeat='user in userlist')
 								td.success {{user.username}}
-								td 
-									a(ui-sref="users.detail({id : user._id})") {{user._id}} 
+								td {{user._id}} 
 								td
-									button(ng-click='removeUser(user._id)') delete me
-								td  {{user.password}}
+									button.btn.btn-danger(ng-click='removeUser(user._id)') delete me
+								td  
+									button.btn.btn-success
+										a(ui-sref="users.detail({id : user._id})") Edit
 
 		ui-view.col-sm-12.col-md-6
 my-directive(bar='3') transclusion

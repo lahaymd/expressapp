@@ -13,12 +13,26 @@ angular.module('myApp').factory('AuthService',
       login: login,
       logout: logout,
       register: register,
-      getUser: getUser,
+      getUsers: getUsers,
       find: find,
-      remove: remove
+      remove: remove,
+      update: update
     };
 
     return service;
+
+    function update(id) {
+      var deferred = $q.defer();
+      $http.put('/api/users/' + id._id, id)
+      .success(function(user) {
+        console.log(user)
+        deferred.resolve(user)
+      })
+      .error(function(error) {
+        deferred.reject(error);
+      })
+      return deferred.promise;
+    }
 
     function remove(id) {
 
@@ -46,7 +60,7 @@ angular.module('myApp').factory('AuthService',
 
     }
 
-    function getUser() {
+    function getUsers() {
       var deferred = $q.defer();
       $http.get('/api/users')
         .success(function(users) {

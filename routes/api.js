@@ -35,4 +35,18 @@ router.delete('/:id', function(req, res) {
   });
 })
 
+
+router.put('/:id', function(req, res) {
+  var id = req.params.id;
+  var user = req.body;
+  console.log('id: ' + id);
+  console.log(user);
+  Auth.findOneAndUpdate({_id: id}, user, {new: true}, function(err, docs) {
+    console.log(err);
+    console.log(docs)
+    console.log('updated user')
+    res.json(docs)
+  } )
+})
+
 module.exports = router;

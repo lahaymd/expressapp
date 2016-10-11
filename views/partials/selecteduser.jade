@@ -1,16 +1,15 @@
-table.table
-	thead
-		tr
-			th Username
-			th User ID
-			th Password
-		tbody
-			tr
-				td {{selectedUser.username}}
-				td {{selectedUser._id}}
-				td {{selectedUser.password}}
+.form-group
+	label Username
+	input.form-control(type="text" ng-model='selectedUser.username' value='{{selectedUser.username | uppercase}}')
+
+	label ID
+	input.form-control(type="text" ng-model='selectedUser._id' value='{{selectedUser._id}}')
+
+	label Password
+	input.form-control(type="text" ng-model='selectedUser.password' value='{{selectedUser.password}}')
+button.btn.btn-warning(ng-click='updateUser()') save
 
 
 
 
-{{selectedUser}}
+

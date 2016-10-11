@@ -18,7 +18,7 @@ function config($stateProvider, $urlRouterProvider, $locationProvider) {
         state('users.detail', {
           url: '/:id',
           templateUrl: '/partials/selecteduser',
-          controller: 'ShowUserController'
+          controller: 'UserController'
         }).
         state('register', {
           url: '/register',
