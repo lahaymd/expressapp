@@ -1,6 +1,6 @@
 (function() {
 	angular.module('myApp').
-		controller('UserController', ['$scope', '$stateParams', 'AuthService',  function($scope, $stateParams, AuthService ) {
+		controller('UserController', ['$scope', '$stateParams', 'AuthService', '$location', '$window',  function($scope, $stateParams, AuthService, $location, $window ) {
 
  $scope.userlist = {};
 
@@ -21,9 +21,14 @@ fetchUsers();
   $scope.removeUser = function(id) {
                       console.log(id)
                           AuthService.remove(id)
-                            .then(function() {
+                            .then(function(user) {
+                              console.log(user);
+                              console.log($scope.userlist)
+                              console.log(id);
+                              var index = $scope.userlist.findIndex(x=> x._id == id);
+                              $scope.userlist.splice(index,1)
                               console.log('promise returned');
-                              fetchUsers();
+                            
                             })
                             
                         }
@@ -48,15 +53,41 @@ fetchUsers();
       $scope.updateUser = function() {
         console.log($scope.selectedUser)
         AuthService.update($scope.selectedUser)
-          .then(function() {
+          .then(function(x) {
+            var index= $scope.userlist.findIndex(x=> x._id == $scope.selectedUser._id)
+            console.log(index)
+            console.log(x);
             console.log('updated from controller')
-              fetchUsers();
+            $window.location.reload();
+
+              // $scope.userlist.splice(index, 1, $scope.selectedUser);
+              $location.path('/users');
+
           }, function(error) {
             console.log('you fucked up')
             console.log(error.message)
           })
       }
 
+
+$scope.register = function () {
+      // call register from service
+      AuthService.register($scope.userlist.username, $scope.userlist.password)
+        // handle success
+        .then(function (newUser) {
+          console.log(newUser)
+          $scope.userlist.push(newUser);
+          $('input').val('');
+          // $scope.registerForm = data;
+           // $scope.userlist = {};
+           // $location.path('/users')
+        })
+        // handle error
+        .catch(function (error) {
+          alert(error)
+        });
+        // $scope.registerForm = {};
+    };
 
 
   

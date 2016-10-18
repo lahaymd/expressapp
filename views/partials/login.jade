@@ -1,20 +1,4 @@
-if (!session)
- h1 Login
- form(ng-submit='login()') 
-  fieldset#fieldset
-   legend Login
-
-   label(for="username") User name:
-   input#username(name="username" ng-model='loginForm.username' required)
-   label(for="password") Password:
-   input#password(type="password", name="password" ng-model='loginForm.password' required)
-   button#login(type="submit", value="Log in" ng-disabled='disabled') login
-else
-     
-     form(method="POST", action="/session/session")
-       input(class="submit" id="sub" type="hidden", name="_method", value="DELETE") 
-       input(class="submit" id="sub" type="submit", value="Log out")
-
+h1 Login
 
 
 

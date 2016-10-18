@@ -8,7 +8,7 @@ router.post('/', function(req, res) {
  
    Auth.create({username: req.body.username, password: req.body.password}, function(err, user) {
   if (err) return console.error(err);
-  console.log(user);
+  console.log(user, '******');
   res.json(user);
 });
 });
@@ -23,7 +23,7 @@ router.get('/:id', function(req, res) {
 
   Auth.findOne({_id: req.params.id}, function(err,docs) {
     res.json(docs)
-    console.log(docs +'!')
+    console.log(docs +'!$')
   })
 })
 

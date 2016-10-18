@@ -3,11 +3,16 @@
 		.panel-heading
 			h3.panel-title Register
 		.panel-body
-			form( name='myForm' ng-model="myForm" ng-submit='register()') 
+			form( name='myForm' ng-model="myForm" ng-submit='vm.register()') 
 				.form-group
 					label(for="username") Username<br />
-					input#username.form-control(name="username" ng-model='registerForm.username' required) 
+					input#username.form-control(name="username" ng-model='vm.registerForm.username' required autofocus) 
+					div(ng-show='myForm.username.$error.required') username is required
 				.form-group
 					label(for="password") Password<br />
-					input#password.form-control(name="password" ng-model='registerForm.password' required) 
-				button(type="submit", value="Create" class='btn btn-default') Create
+					input#password.form-control(name="password" ng-model='vm.registerForm.password' required minlength='5') 
+					div(ng-show='myForm.password.$error.required') password is required
+					div(ng-show='myForm.password.$error.minlength') minlength is 5
+				button(type="submit", value="Create" class='btn btn-default' ng-disabled='myForm.$pristine') Create
+				div( id='dirty' ng-show='myForm.$dirty') I'm dirty
+

@@ -9,7 +9,7 @@
 							th delete
 							th Edit
 						tbody
-							tr(ng-repeat='user in userlist')
+							tr(ng-repeat='user in userlist' class='repeatedItem')
 								td.success {{user.username}}
 								td {{user._id}} 
 								td
@@ -19,5 +19,22 @@
 										a(ui-sref="users.detail({id : user._id})") Edit
 
 		div.ui-view.col-sm-12.col-md-6
-my-directive(bar='3') transclusion
-my-directive
+
+
+
+		div.panel.panel-primary.col-sm-12.col-md-6
+			.panel-heading
+				h3.panel-title Register
+			.panel-body
+				form( name='myForm' ng-model="myForm" ng-submit='register()') 
+					div.form-group( ng-class="{ 'has-error': myForm.username.$touched && myForm.username.$invalid}")
+						label(for="username") Username<br />
+						input#username.form-control(name="username" ng-model='userlist.username' minlength='5' required autofocus) 
+						div.help-block(ng-messages='myForm.username.$error' ng-if="myForm.username.$touched")
+							div(ng-message='required') I'm required
+							div(ng-message='minlength') Name is too short
+					.form-group
+						label(for="password") Password<br />
+						input#password.form-control(name="password" ng-model='userlist.password' required) 
+					button(type="submit", value="Create" class='btn btn-default') Create
+		

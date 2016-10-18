@@ -1,1 +1,1 @@
-angular.module('myApp', ['ui.router','ngAnimate'])
+angular.module('myApp', ['ui.router','ngAnimate', 'ngMessages'])

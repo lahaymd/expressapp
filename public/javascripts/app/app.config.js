@@ -6,9 +6,10 @@ function config($stateProvider, $urlRouterProvider, $locationProvider) {
 	       $urlRouterProvider.otherwise('/');
          $locationProvider.html5Mode(true);
     $stateProvider
-        .state('home', {
+       .state('login', {
           url: '/',
-          templateUrl: '/partials/index'
+          templateUrl: '/partials/login'
+           // controller: 'LoginController'
         }).
         state('users', {
           url: '/users',
@@ -23,7 +24,8 @@ function config($stateProvider, $urlRouterProvider, $locationProvider) {
         state('register', {
           url: '/register',
           templateUrl: '/partials/register',
-          controller: 'RegisterController'
+          controller: 'RegisterController',
+          controllerAs: 'vm'
         }).
         state('api', {
           url: '/api/user',

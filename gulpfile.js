@@ -22,6 +22,8 @@ var del = require('del');
 var ngAnnotate = require('gulp-ng-annotate');
 var jade = require('gulp-jade');
 var imagemin = require('gulp-imagemin');
+const babel = require('gulp-babel');
+const sourcemaps = require('gulp-sourcemaps');
 
 
 /**
@@ -115,12 +117,16 @@ gulp.task('browser-sync', ['nodemon'], function () {
 });
 
 gulp.task('scripts', function() {
-  return gulp.src('public/javascripts/*.js')
+  return gulp.src('public/javascripts/**/*.js')
     .pipe(plumber())
     .pipe(ngAnnotate())
+    .pipe(sourcemaps.init())
+    .pipe(babel({
+      presets: ['es2015']
+      }))
     .pipe(concat('scripts.js'))
     .pipe(rename({suffix: '.min'}))
-    .pipe(uglify())
+    //.pipe(uglify())
     .pipe(gulp.dest('public/distribution/scripts'))
     .pipe(reload({stream: true}));
 })
