@@ -1,3 +1,16 @@
+body {
+  height: auto !important;
+}
+.md-nav-bar {
+  width: 100%;
+}
+ul {
+  justify-content: space-around;
+}
+.loginBox {
+  max-width: 90%;
+  width: 500px;
+}
 ul.ng-leave {
   animation: slideOutRight 3s;
 }

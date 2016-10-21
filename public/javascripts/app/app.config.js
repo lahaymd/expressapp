@@ -8,8 +8,9 @@ function config($stateProvider, $urlRouterProvider, $locationProvider) {
     $stateProvider
        .state('login', {
           url: '/',
-          templateUrl: '/partials/login'
-           // controller: 'LoginController'
+          templateUrl: '/partials/login',
+           // controller: 'LoginController',
+           controllerAs: 'vm'
         }).
         state('users', {
           url: '/users',

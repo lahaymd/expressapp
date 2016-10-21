@@ -2,6 +2,7 @@
 	angular.module('myApp').
 		controller('ShowUserController', ['$scope', '$stateParams', 'AuthService', function($scope, $stateParams, AuthService) {
       $scope.selectedUser = {};
+     
       
    var refresh=  function(){ AuthService.find($stateParams.id)
                       .then(function(user) {

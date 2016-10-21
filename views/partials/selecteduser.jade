@@ -1,13 +1,14 @@
-.form-group
-	label Username
-	input.form-control(type="text" ng-model='selectedUser.username' value='{{selectedUser.username | uppercase}}')
-
-	label ID
-	input.form-control(type="text" ng-model='selectedUser._id' value='{{selectedUser._id}}')
-
-	label Password
-	input.form-control(type="text" ng-model='selectedUser.password' value='{{selectedUser.password}}')
-button.btn.btn-warning(ng-click='updateUser()') save
+md-card
+	md-input-container.md-block
+		label Username
+		input(type="text" ng-model='selectedUser.username' value='{{selectedUser.username | uppercase}}')
+	md-input-container
+		label ID
+		input(type="text" ng-model='selectedUser._id' value='{{selectedUser._id}}')
+	md-input-container
+		label Password
+		input(type="text" ng-model='selectedUser.password' value='{{selectedUser.password}}')
+	md-button(ng-click='updateUser()') save
 
 
 

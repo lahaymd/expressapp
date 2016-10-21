@@ -1,7 +1,9 @@
 extends layout
 block content 
 	include header
-	div(ui-view)
+	div(class='container' layout='row' flex)
+		md-sidenav(flex class='md-sidenav-left md-whiteframe-z2' md-is-locked-open='$mdMedia("gt-sm")'  md-component-id='left') sidenav
+		div(ui-view flex)
 	include footer
          
 

@@ -1,40 +1,36 @@
-.container.fluid
-	.row
-		.table-responsive.col-sm-12.col-md-6
-				table.table.table-striped.table-bordered.table-hover.table-condensed
-					thead
-						tr
-							th Username 
-							th User ID 
-							th delete
-							th Edit
-						tbody
-							tr(ng-repeat='user in userlist' class='repeatedItem')
-								td.success {{user.username}}
-								td {{user._id}} 
-								td
-									button.btn.btn-danger(ng-click='removeUser(user._id)') delete me
-								td  
-									button.btn.btn-success
-										a(ui-sref="users.detail({id : user._id})") Edit
+div(layout='row' layout-wrap)
+	table(flex='50')
+		thead
+			tr
+				th Username 
+				th User ID 
+				th delete
+				th Edit
+			tbody
+				tr(ng-repeat='user in userlist' class='repeatedItem')
+					td.success {{user.username}}
+					td {{user._id}} 
+					td
+						md-button(ng-click='removeUser(user._id)') delete me
+					td  
+						md-button
+							a(ui-sref="users.detail({id : user._id})") Edit
 
-		div.ui-view.col-sm-12.col-md-6
+	div.ui-view(flex='50')
 
 
 
-		div.panel.panel-primary.col-sm-12.col-md-6
-			.panel-heading
-				h3.panel-title Register
-			.panel-body
-				form( name='myForm' ng-model="myForm" ng-submit='register()') 
-					div.form-group( ng-class="{ 'has-error': myForm.username.$touched && myForm.username.$invalid}")
-						label(for="username") Username<br />
-						input#username.form-control(name="username" ng-model='userlist.username' minlength='5' required autofocus) 
-						div.help-block(ng-messages='myForm.username.$error' ng-if="myForm.username.$touched")
-							div(ng-message='required') I'm required
-							div(ng-message='minlength') Name is too short
-					.form-group
-						label(for="password") Password<br />
-						input#password.form-control(name="password" ng-model='userlist.password' required) 
-					button(type="submit", value="Create" class='btn btn-default') Create
-		
+	md-card(flex='50')		
+		md-card-title Register
+		form( name='myForm' ng-model="myForm" ng-submit='register()') 
+			div( ng-class="{ 'has-error': myForm.username.$touched && myForm.username.$invalid}")
+			md-input-container
+				label(for="username") Username<br />
+				input#username(name="username" ng-model='userlist.username' minlength='5' required autofocus) 
+				div.help-block(ng-messages='myForm.username.$error' ng-if="myForm.username.$touched")
+					div(ng-message='required') I'm required
+					div(ng-message='minlength') Name is too short
+			md-input-container
+				label(for="password") Password<br />
+				input#password(name="password" ng-model='userlist.password' required) 
+			button(type="submit", value="Create") Create
