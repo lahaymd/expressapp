@@ -37,6 +37,13 @@ function config($stateProvider, $urlRouterProvider, $locationProvider) {
           url: '/directive',
           templateUrl: '/partials/directive',
           controller: 'ExampleController'
+        }).
+        state('readerboard', {
+          url: '/readerboard',
+          templateUrl: '/partials/readerboard',
+          controller: 'ReaderboardController',
+          controllerAs: 'vm'
+
         })
         
 }

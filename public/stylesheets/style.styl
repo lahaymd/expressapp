@@ -1,3 +1,16 @@
+#stick
+	position sticky
+	top 100px
+	z-index 1
+
+.checkstyle
+	color green
+	
+#tool-container
+	position absolute
+	height 200px
+	width 400px
+
 body
 	height auto !important
 
@@ -11,28 +24,27 @@ ul
 	max-width 90%
 	width 500px
 
-ul.ng-leave
-	animation slideOutRight 3s
+
 
 [ui-view].ng-enter
-	animation rollIn 1s
+	animation slideInRight 1s
     
 
 
 	
 [ui-view].ng-leave
-	animation rollOut 1s
+	animation slideOutRight 1s
 
 	
 
 .ui-view.ng-enter
-	animation flipInX 1s
+	animation zoomIn 1s
 	
 .ui-view.ng-enter.ng-enter-active
 	background red
 	
 .ui-view.ng-leave
-	animation bounceOut 1s
+	animation hinge 1s
 	
 .ui-view.ng-leave.ng-leave-active
 	background blue
@@ -45,6 +57,57 @@ ul.ng-leave
 	animation bounceIn 3s
 	
 
+
+/*
+* keyframes
+*/
+.animated.bounceOut {
+  -webkit-animation-duration: .75s;
+  animation-duration: .75s;
+}
+
+@-webkit-keyframes bounceOut {
+  20% {
+    -webkit-transform: scale3d(.9, .9, .9);
+    transform: scale3d(.9, .9, .9);
+  }
+
+  50%, 55% {
+    opacity: 1;
+    -webkit-transform: scale3d(1.1, 1.1, 1.1);
+    transform: scale3d(1.1, 1.1, 1.1);
+  }
+
+  to {
+    opacity: 0;
+    -webkit-transform: scale3d(.3, .3, .3);
+    transform: scale3d(.3, .3, .3);
+  }
+}
+
+@keyframes bounceOut {
+  20% {
+    -webkit-transform: scale3d(.9, .9, .9);
+    transform: scale3d(.9, .9, .9);
+  }
+
+  50%, 55% {
+    opacity: 1;
+    -webkit-transform: scale3d(1.1, 1.1, 1.1);
+    transform: scale3d(1.1, 1.1, 1.1);
+  }
+
+  to {
+    opacity: 0;
+    -webkit-transform: scale3d(.3, .3, .3);
+    transform: scale3d(.3, .3, .3);
+  }
+}
+
+.bounceOut {
+  -webkit-animation-name: bounceOut;
+  animation-name: bounceOut;
+}
 
 
      

@@ -17,9 +17,12 @@ var fetchUsers= function() {
 
 fetchUsers();
 
+
+
  
   $scope.removeUser = function(id) {
                       console.log(id)
+                      $scope.isLoading = true;
                           AuthService.remove(id)
                             .then(function(user) {
                               console.log(user);
@@ -28,6 +31,7 @@ fetchUsers();
                               var index = $scope.userlist.findIndex(x=> x._id == id);
                               $scope.userlist.splice(index,1)
                               console.log('promise returned');
+                              $scope.isLoading= false;
                             
                             })
                             
@@ -71,13 +75,15 @@ fetchUsers();
 
 
 $scope.register = function () {
+      $scope.isLoading= true;
       // call register from service
       AuthService.register($scope.userlist.username, $scope.userlist.password)
         // handle success
         .then(function (newUser) {
           console.log(newUser)
           $scope.userlist.push(newUser);
-          $('input').val('');
+          angular.element(document.querySelectorAll('input')).val('');
+          $scope.isLoading= false;
           // $scope.registerForm = data;
            // $scope.userlist = {};
            // $location.path('/users')
