@@ -1,8 +1,4 @@
-h1#stick Login
-md-button(ng-click='vm.open()') open menu
-md-button.md-primary login
-md-button.md-accent accent login
-div(class='lock-size' layout='row' layout-align= 'center center' ng-cloak)
+div(class='lock-size' layout='row' layout-align= 'center right' ng-cloak)
 	md-fab-speed-dial(md-open='false' class='md-scale')
 		md-fab-trigger
 			md-button(class='md-fab md-warn')
@@ -11,6 +7,11 @@ div(class='lock-size' layout='row' layout-align= 'center center' ng-cloak)
 		md-fab-actions
 			md-button(class='md-fab md-mini')
 				md-icon(md-svg-src='/static/material-design-icons/device/svg/design/ic_airplanemode_active_48px.svg')
+		md-fab-actions
+			md-button(class='md-fab md-mini')
+				md-tooltip github
+				a(href='https://github.com/lahaymd')
+					md-icon(md-svg-src='/images/github-logo.svg')		
 md-content.md-padding
 	p.  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde, maxime, nobis. Maiores, aperiam quis minima velit ex voluptas, aspernatur soluta magnam quisquam natus recusandae quas quidem fugit. In, impedit, eveniet.
 		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur beatae dolore atque fugiat quos maiores et necessitatibus pariatur. Eos aperiam dolorem totam nemo aut, non excepturi quibusdam tempora nam ad.  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime fugit possimus consequuntur quisquam facere optio eveniet quidem voluptate sequi voluptates commodi voluptas reiciendis mollitia eaque at, cumque, dolores magni velit!

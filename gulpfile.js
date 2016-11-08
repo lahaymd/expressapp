@@ -24,6 +24,7 @@ var jade = require('gulp-jade');
 var imagemin = require('gulp-imagemin');
 const babel = require('gulp-babel');
 const sourcemaps = require('gulp-sourcemaps');
+var minifyCSS= require("gulp-uglifycss");
 
 
 /**
@@ -117,7 +118,7 @@ gulp.task('browser-sync', ['nodemon'], function () {
 });
 
 gulp.task('scripts', function() {
-  return gulp.src('public/javascripts/**/*.js')
+  return gulp.src(['public/javascripts/app/app.module.js', 'public/javascripts/**/*.js'])
     .pipe(plumber())
     .pipe(ngAnnotate())
     .pipe(sourcemaps.init())
@@ -126,11 +127,38 @@ gulp.task('scripts', function() {
       }))
     .pipe(concat('scripts.js'))
     .pipe(rename({suffix: '.min'}))
+    .pipe(uglify())
+    .pipe(gulp.dest('public/distribution/scripts'))
+    .pipe(reload({stream: true}));
+})
+
+gulp.task('vendor', function() {
+  return gulp.src([
+      'node_modules/angular/angular.min.js',
+      'node_modules/angular-ui-router/release/angular-ui-router.min.js',
+      'node_modules/angular-messages/angular-messages.min.js',
+      'node_modules/angular-animate/angular-animate.min.js',
+      'node_modules/angular-material/angular-material.min.js',
+      'node_modules/angular-aria/angular-aria.min.js' 
+    ])
+    .pipe(concat('vendorbundle.js'))
     //.pipe(uglify())
     .pipe(gulp.dest('public/distribution/scripts'))
     .pipe(reload({stream: true}));
 })
 
+gulp.task('css', function() {
+  return gulp.src([
+      'public/stylesheets/style.css',
+      'node_modules/animate.css/animate.min.css',
+      'node_modules/angular-material/angular-material.min.css'
+
+    ])
+    .pipe(minifyCSS({'uglyComments': false}))
+    .pipe(concat('styles.css'))
+    .pipe(gulp.dest('public/distribution/scripts'))
+    .pipe(reload({stream: true}))
+  })
 
 gulp.task('cu', function() {
   return gulp.src(['public/javascripts/*.js', '!public/javascripts/**/*.min.js'])

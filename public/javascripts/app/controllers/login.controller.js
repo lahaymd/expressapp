@@ -1,10 +1,11 @@
 (function() {
 	angular.module('myApp').
-		controller('NavController', ['$mdSidenav',  function($mdSidenav ) {
+		controller('NavController', ['$mdSidenav', '$location',  function($mdSidenav, $location ) {
 			var vm = this;
 			// vm.isSidenavOpen= false;
 
-	
+			vm.currentNavItem = $location.path().slice(1) || 'login';
+			console.log(vm.currentNavItem)
 
 
 	
@@ -30,4 +31,4 @@
 		}
 	}])
 		
-})()
+})();

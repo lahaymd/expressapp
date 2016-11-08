@@ -1,3 +1,10 @@
+(function(){
+  'use strict';
+
+
+
+
+
 angular
     .module('myApp')
     .config(config);
@@ -48,3 +55,4 @@ function config($stateProvider, $urlRouterProvider, $locationProvider) {
         
 }
 
+})();

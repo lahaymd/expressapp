@@ -98,4 +98,4 @@ $scope.register = function () {
 
   
 }])
-})()
+})();

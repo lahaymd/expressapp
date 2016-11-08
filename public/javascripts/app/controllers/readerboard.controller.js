@@ -4,10 +4,11 @@
 			var vm = this;
 			
 
-			vm.clear = function() {
-				$document.find('textarea').val('');
+			vm.clear = () => $document.find('textarea').val('');
+			// function() {
+			// 	$document.find('textarea').val('');
 				
-			}
+			// }
 
 			vm.areaOne = function() {
 				 vm.letters = document.getElementById('one').value.replace(/\s+/g, '').split('').sort()
@@ -141,4 +142,4 @@ console.log(obj)
 
 				}
 		})
-})()
+})();

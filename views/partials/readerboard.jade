@@ -1,5 +1,6 @@
 div(layout='row' layout-wrap )
 	h1(flex='100' ng-style='{"text-align": "center"}' ) readerboard
+	md-button(ng-click='vm.clear()') clear
 	md-input-container(flex='50')
 		label textarea 1
 		textarea(id='one' ng-model='one' ng-change='vm.areaOne()' autofocus) 
@@ -14,9 +15,7 @@ div(layout='row' layout-wrap )
 			{{letterTwo[0]}} {{letterTwo[1]}}
 	div(flex='50' layout='column')		
 		div(ng-repeat='(key,value) in vm.difference' )
-
 			{{key}} {{value}}
 	div(flex='50' layout='column')		
 		div(ng-repeat='(key,value) in vm.letterDifference' )
-
 			{{key}} {{value}}

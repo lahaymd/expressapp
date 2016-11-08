@@ -1,4 +1,4 @@
-(function(){
+;(function(){
 	angular.module('myApp').
 		controller('ShowUserController', ['$scope', '$stateParams', 'AuthService', function($scope, $stateParams, AuthService) {
       $scope.selectedUser = {};
@@ -38,4 +38,4 @@
       }
 
 }])
-})()
+})();
