@@ -141,6 +141,7 @@ gulp.task('vendor', function() {
       'node_modules/angular-material/angular-material.min.js',
       'node_modules/angular-aria/angular-aria.min.js' 
     ])
+    .pipe(sourcemaps.init())
     .pipe(concat('vendorbundle.js'))
     //.pipe(uglify())
     .pipe(gulp.dest('public/distribution/scripts'))

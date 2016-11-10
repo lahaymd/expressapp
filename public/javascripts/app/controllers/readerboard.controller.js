@@ -1,7 +1,9 @@
 (function() {
 	angular.module('myApp').
-		controller('ReaderboardController',  function($document, $log){
+		controller('ReaderboardController',  function($document, $log, $timeout){
 			var vm = this;
+
+			
 			
 
 			vm.clear = () => $document.find('textarea').val('');
@@ -70,7 +72,7 @@
 
 
 var test = vm.letters.filter(function(item, index, arr) {
-				 foo = this.map(function(i){
+				var foo = this.map(function(i){
 					return i[0] 
 				}) 
 				 console.log('foo', foo)
@@ -82,7 +84,7 @@ var test = vm.letters.filter(function(item, index, arr) {
  console.log('test: ',test) 
 
 var test2 = vm.lettersTwo.filter(function(item, index, arr) {
-				 bar = this.map(function(i){
+				var bar = this.map(function(i){
 					return i[0]
 				})
 				
@@ -91,55 +93,35 @@ var test2 = vm.lettersTwo.filter(function(item, index, arr) {
 
  console.log('test2: ',test2) 
 
+vm.letterDifference = vm.lettersTwo.map(function(item, index, array){
 
-
-// vm.difference = test.map(function(item, index, array){
-// 				var reformatted = {};
-// 				console.log('item',item[1])
-// 				console.log('this',this[1])
-// 				reformatted[item[0]] = (item[1] - this[index][1])
-// 				return reformatted;
-
-				
-// }, test2)
-
-vm.letterDifference = test2.map(function(item, index, array){
-console.log(item[1])
-console.log(this.length)
-console.log((((this.length > 0 && this[index] !== undefined && this[index].indexOf(item[0]) !== -1)) ?  this[index][1] : 0))
-// console.log(this[index].indexOf(item[0]))
-// console.log(this[index][1])
+console.log('item', item)
+console.log('index', index)
+console.log('array', array)
+console.log('this[index]', this[index])
+console.log('this', this)
+							var thisMapped= this.map(function(i, idx, arr) {
+							  	return i[0]
+							  })
+							  	console.log('thisMapped', thisMapped)
+							var thisMappedFindIndex =thisMapped.findIndex(function(i, idx, arr){
+								return i === item[0];
+							});
+							console.log(thisMappedFindIndex)
 							var obj = {};
-							if(  (((this.length > 0 && this[index] !== undefined && this[index].indexOf(item[0]) !== -1)) ?  this[index][1] : 0)){
-								obj[item[0]] = item[1] -  ((this.length > 0 && this[index] !== undefined && this[index].indexOf(item[0]) !== -1 ) ? this[index][1] : 0) 
-
-							}else{
+							  if( this.length > 0 && thisMapped.indexOf(item[0] !== -1) && thisMappedFindIndex !== -1) {
+								obj[item[0]] =  item[1] - this[thisMappedFindIndex][1];
+							} else {
+							
 								obj[item[0]] = item[1]
 							}
-console.log(obj)
+							
+console.log('thisMappedFindIndex',thisMappedFindIndex)
+console.log('obj', obj)
 							return obj;
-},test)
+},vm.letters)
 
-
-
-
-// vm.letterDifference = test2.map(function(item, index, array){
-// console.log(item[1])
-// console.log(this.length)
-// console.log((((this.length > 0 && this[index] !== undefined && this[index].indexOf(item[0]) !== -1)) ?  this[index][1] : 0))
-// // console.log(this[index].indexOf(item[0]))
-// // console.log(this[index][1])
-// 							var obj = {};
-// 							if(item[1] >  (((this.length > 0 && this[index] !== undefined && this[index].indexOf(item[0]) !== -1)) ?  this[index][1] : 0)){
-// 								obj[item[0]] = item[1] -  ((this.length > 0 && this[index] !== undefined && this[index].indexOf(item[0]) !== -1 ) ? this[index][1] : 0) 
-
-// 							}else{
-// 								obj
-// 							}
-// console.log(obj)
-// 							return obj;
-// },test)
 
 				}
 		})
-})();
+})()

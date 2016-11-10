@@ -11,11 +11,8 @@ div(layout='row' layout-wrap )
 		div(ng-repeat='letter in vm.letters'  )
 			{{letter[0]}}  {{letter[1]}}
 	div(flex='50' layout='column')		
-		div(ng-repeat='letterTwo in vm.lettersTwo' )
+		div(ng-repeat='letterTwo in vm.lettersTwo' class='diff' )
 			{{letterTwo[0]}} {{letterTwo[1]}}
-	div(flex='50' layout='column')		
-		div(ng-repeat='(key,value) in vm.difference' )
-			{{key}} {{value}}
-	div(flex='50' layout='column')		
-		div(ng-repeat='(key,value) in vm.letterDifference' )
-			{{key}} {{value}}
+	div(flex='50' layout='column' ng-animate-children="true"  )		
+		div( ng-repeat='(key,value) in vm.letterDifference' class='diff' )
+			h1 {{key}} {{value}}
