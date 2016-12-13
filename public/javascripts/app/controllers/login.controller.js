@@ -4,6 +4,10 @@
 			var vm = this;
 			// vm.isSidenavOpen= false;
 
+			
+
+
+
 			vm.currentNavItem = $location.path().slice(1) || 'login';
 			console.log(vm.currentNavItem)
 
@@ -14,6 +18,49 @@
 			}
 		
 	}]).
+		controller('LoginController', ['AuthService', function(AuthService){
+
+			var vm = this;
+			 vm.userlist = {};
+
+			 vm.demo = function() {alert(1)}
+			 
+
+			 vm.saveToMongoLab = function () {
+			      // $scope.isLoading= true;
+			      // call register from service
+			      AuthService.postToMongoLab(vm.userlist.fuck)
+			        // handle success
+			        .then(function (newUser) {
+			          console.log(newUser)
+			          vm.userlist.push(newUser);
+			          // angular.element(document.querySelectorAll('input')).val('');
+			          // $scope.isLoading= false;
+			          // $scope.registerForm = data;
+			           // $scope.userlist = {};
+			           // $location.path('/users')
+			        })
+			        // handle error
+			        .catch(function (error) {
+			          alert(error)
+			        });
+			        // $scope.registerForm = {};
+			    };
+
+
+			var fetchMongoLab= function() {
+			                  AuthService.getMongoLab()
+			                  .then(function(users) {
+			                    vm.userlist = users;
+			                    console.log(users)
+			                  }, function(error) {
+			                    console.log(error)
+			                  })
+			                }
+
+			fetchMongoLab();
+			
+		}]).
 		controller('ModalController', ['$mdDialog', function($mdDialog) {
 			var ctrl = this;
 

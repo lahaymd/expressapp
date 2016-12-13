@@ -13,18 +13,10 @@ div(class='lock-size' layout='row' layout-align= 'center right' ng-cloak)
 				a(href='https://github.com/lahaymd')
 					md-icon(md-svg-src='/images/github-logo.svg')		
 md-content.md-padding
-	p.  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde, maxime, nobis. Maiores, aperiam quis minima velit ex voluptas, aspernatur soluta magnam quisquam natus recusandae quas quidem fugit. In, impedit, eveniet.
-		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur beatae dolore atque fugiat quos maiores et necessitatibus pariatur. Eos aperiam dolorem totam nemo aut, non excepturi quibusdam tempora nam ad.  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime fugit possimus consequuntur quisquam facere optio eveniet quidem voluptate sequi voluptates commodi voluptas reiciendis mollitia eaque at, cumque, dolores magni velit!
-		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa deleniti vel excepturi porro, modi, maxime cupiditate dignissimos error aut sunt et omnis provident eaque perferendis. Inventore facere fugit repudiandae cumque.
-		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde, maxime, nobis. Maiores, aperiam quis minima velit ex voluptas, aspernatur soluta magnam quisquam natus recusandae quas quidem fugit. In, impedit, eveniet.
-		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur beatae dolore atque fugiat quos maiores et necessitatibus pariatur. Eos aperiam dolorem totam nemo aut, non excepturi quibusdam tempora nam ad.  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime fugit possimus consequuntur quisquam facere optio eveniet quidem voluptate sequi voluptates commodi voluptas reiciendis mollitia eaque at, cumque, dolores magni velit!
-		Lorem iLorem ipsum dolor sit amet, consectetur adipisicing elit. Unde, maxime, nobis. Maiores, aperiam quis minima velit ex voluptas, aspernatur soluta magnam quisquam natus recusandae quas quidem fugit. In, impedit, eveniet.
-		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur beatae dolore atque fugiat quos maiores et necessitatibus pariatur. Eos aperiam dolorem totam nemo aut, non excepturi quibusdam tempora nam ad.  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime fugit possimus consequuntur quisquam facere optio eveniet quidem voluptate sequi voluptates commodi voluptas reiciendis mollitia eaque at, cumque, dolores magni velit!
-		Lorem iLorem ipsum dolor sit amet, consectetur adipisicing elit. Unde, maxime, nobis. Maiores, aperiam quis minima velit ex voluptas, aspernatur soluta magnam quisquam natus recusandae quas quidem fugit. In, impedit, eveniet.
-		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur beatae dolore atque fugiat quos maiores et necessitatibus pariatur. Eos aperiam dolorem totam nemo aut, non excepturi quibusdam tempora nam ad.  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime fugit possimus consequuntur quisquam facere optio eveniet quidem voluptate sequi voluptates commodi voluptas reiciendis mollitia eaque at, cumque, dolores magni velit!
-		Lorem iLorem ipsum dolor sit amet, consectetur adipisicing elit. Unde, maxime, nobis. Maiores, aperiam quis minima velit ex voluptas, aspernatur soluta magnam quisquam natus recusandae quas quidem fugit. In, impedit, eveniet.
-		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur beatae dolore atque fugiat quos maiores et necessitatibus pariatur. Eos aperiam dolorem totam nemo aut, non excepturi quibusdam tempora nam ad.  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime fugit possimus consequuntur quisquam facere optio eveniet quidem voluptate sequi voluptates commodi voluptas reiciendis mollitia eaque at, cumque, dolores magni velit!
-		Lorem i
-
-	
-		
+	div(ng-repeat='user in vm.userlist')
+		h1 {{user.fuck}} 
+	{{vm.userlist.length}}
+	form(name='myForm' ng-model='myForm' ng-submit='vm.saveToMongoLab()')
+		input( name='fuck' ng-model='vm.userlist.fuck')
+		button(type='submit') saveToMongoLab
+		button(ng-click='vm.demo()') demo

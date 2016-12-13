@@ -6,6 +6,10 @@
     "start": "node ./bin/www",
     "build": "babel src -d lib"
   },
+  "engines": {
+    "node": "5.3.x",
+    "npm": "3.5.x"
+  },
   "dependencies": {
     "angular": "^1.5.8",
     "angular-animate": "^1.2.31",

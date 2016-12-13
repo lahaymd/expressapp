@@ -10,12 +10,18 @@ var mongo = require('mongodb');
 var mongoose = require('mongoose');
 var util = require('util');
 var multer = require('multer');
-mongoose.connect('localhost:27017/mongoose');
-var routes = require('./routes/index');
-
 var api = require('./routes/api');
-
+var routes = require('./routes/index');
+var mongolab = require('./routes/mongolab.api');
+var env = process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 var app = express();
+
+if(env === 'development'){
+mongoose.connect('localhost:27017/mongoose');
+} else {
+mongoose.connect('mongodb://lahaymd:zz040577@ds127998.mlab.com:27998/mikelahay');
+}
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -48,6 +54,7 @@ app.use(session({ secret: 'anystringoftext',
     next();
   });
 app.use('/api/users', api);
+app.use('/api/mongolab', mongolab);
 app.get('/', routes.index);
 app.get('/partials/:name', routes.partials);
 app.get('/partials/:name/:id', routes.nested);

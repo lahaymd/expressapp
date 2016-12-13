@@ -16,7 +16,9 @@ angular.module('myApp').factory('AuthService',
       getUsers: getUsers,
       find: find,
       remove: remove,
-      update: update
+      update: update,
+      getMongoLab: getMongoLab,
+      postToMongoLab: postToMongoLab
     };
 
     return service;
@@ -170,5 +172,40 @@ angular.module('myApp').factory('AuthService',
       return deferred.promise;
 
     }
+
+    function getMongoLab() {
+      var deferred = $q.defer();
+      $http.get('/api/mongolab')
+        .success(function(users) {
+          deferred.resolve(users)
+        })
+        .error(function(error) {
+          deferred.reject(error +'!')
+        })
+        return deferred.promise;
+    }
+
+    function postToMongoLab(fuck) {
+
+      // create a new instance of deferred
+      var deferred = $q.defer();
+
+      // send a post request to the server
+      $http.post('/api/mongolab', {fuck: fuck})
+        // handle success
+        .success(function (response) {
+            deferred.resolve(response);
+         
+        }).error (function(response) {
+          defer.reject(response)
+        });
+        
+
+      // return promise object
+      return deferred.promise;
+
+    }
+
+
 
 }]);
