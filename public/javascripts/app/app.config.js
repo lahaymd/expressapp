@@ -40,18 +40,17 @@ function config($stateProvider, $urlRouterProvider, $locationProvider) {
           templateUrl: '/partials/users',
           controller: 'UserController'
         }).
-        state('directive', {
-          url: '/directive',
-          templateUrl: '/partials/directive',
-          controller: 'ExampleController'
-        }).
         state('readerboard', {
           url: '/readerboard',
           templateUrl: '/partials/readerboard',
           controller: 'ReaderboardController',
           controllerAs: 'vm'
 
-        })
+        }).
+        state('pdf', {
+          url: '/pdf',
+          template: "<object data='/images/illustrator-resume.pdf' width='100%' height='100%'></object>"
+        });
         
 }
 

@@ -8,7 +8,6 @@
   },
   "engines": {
     "node": "5.3.x"
-    
   },
   "dependencies": {
     "angular": "^1.5.8",
@@ -67,5 +66,8 @@
     "typographic": "^2.9.3",
     "util": "latest"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "gulp-jshint": "^2.0.4",
+    "jshint": "^2.9.4"
+  }
 }

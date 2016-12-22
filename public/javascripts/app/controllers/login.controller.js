@@ -18,6 +18,11 @@
 			}
 		
 	}]).
+		controller('SidenavController', ['$mdSidenav', function($mdSidenav){
+			var $ctrl = this;
+			$ctrl.toggleNav = () => $mdSidenav('left').toggle();
+			
+		}]).
 		controller('LoginController', ['AuthService', function(AuthService){
 
 			var vm = this;

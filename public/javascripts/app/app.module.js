@@ -10,6 +10,7 @@
 				.accentPalette('teal')
 				.warnPalette('red')
 				.backgroundPalette('grey')
+				.dark() 
 		})
 
-})();
+})(); 

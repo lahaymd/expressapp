@@ -8,10 +8,9 @@ var lost = require('lost');
 var postcss = require('gulp-postcss');
 var poststylus = require('poststylus');
 var rucksack = require('rucksack-css');
-// var autoprefixer = require('autoprefixer');
+var autoprefixer = require('autoprefixer');
 var font = require('postcss-font-magician');
 var uglify = require('gulp-uglify');
-//var stylint = require('gulp-stylelint');
 var plumber = require ('gulp-plumber');
 var concat = require('gulp-concat');
 var browserSync = require('browser-sync');
@@ -25,6 +24,14 @@ var imagemin = require('gulp-imagemin');
 const babel = require('gulp-babel');
 const sourcemaps = require('gulp-sourcemaps');
 var minifyCSS= require("gulp-uglifycss");
+var jshint = require('gulp-jshint');
+
+
+gulp.task('jshint', function() {
+  return gulp.src(['**/*.js','!node_modules/**/*.js'])
+        .pipe(jshint())
+        .pipe(jshint.reporter('default'))
+  })
 
 
 /**
@@ -38,40 +45,11 @@ gulp.task('templates', function() {
         .pipe(reload({stream: true}));
 });
 
-
-var stylelintConfig = {
-    "rules": {
-      "block-no-empty": true,
-      "color-no-invalid-hex": true,
-      "declaration-colon-space-after": "always",
-      "declaration-colon-space-before": "never",
-      "function-comma-space-after": "always",
-      "function-url-quotes": "double",
-      "media-feature-colon-space-after": "always",
-      "media-feature-colon-space-before": "never",
-      "media-feature-name-no-vendor-prefix": true,
-      "max-empty-lines": 5,
-      "number-leading-zero": "never",
-      "number-no-trailing-zeros": true,
-      "property-no-vendor-prefix": true,
-      "rule-no-duplicate-properties": true,
-      "declaration-block-no-single-line": true,
-      "rule-trailing-semicolon": "always",
-      "selector-list-comma-space-before": "never",
-      "selector-list-comma-newline-after": "always",
-      "selector-no-id": true,
-      "string-quotes": "double",
-      "value-no-vendor-prefix": true
-    }
-  }
 /**
  * Important!!
  * Separate task for the reaction to `.jade` files
  */
 gulp.task('jade-watch', ['templates'], reload);
-
-
-
 
 var BROWSER_SYNC_RELOAD_DELAY = 500;
 
@@ -143,12 +121,12 @@ gulp.task('vendor', function() {
     ])
     .pipe(sourcemaps.init())
     .pipe(concat('vendorbundle.js'))
-    //.pipe(uglify())
+    .pipe(uglify())
     .pipe(gulp.dest('public/distribution/scripts'))
     .pipe(reload({stream: true}));
 })
 
-gulp.task('css', function() {
+gulp.task('css',['styles'], function() {
   return gulp.src([
       'public/stylesheets/style.css',
       'node_modules/animate.css/animate.min.css',
@@ -161,40 +139,26 @@ gulp.task('css', function() {
     .pipe(reload({stream: true}))
   })
 
-gulp.task('cu', function() {
-  return gulp.src(['public/javascripts/*.js', '!public/javascripts/**/*.min.js'])
-    .pipe(plumber())
-    
-    // .pipe(rename({suffix: '.min'}))
-    .pipe(uglify())
-    
- 
-
-    .pipe(reload({stream: true}));
-})
-
-
-
 
 gulp.task('styles', function() {
     return  gulp.src('public/stylesheets/style.styl')
-    .pipe(plumber())
-    .pipe(stylus({
-      use: [typographic(), nib(), rupture(), axis(),  poststylus([lost(), rucksack(), font()])]
-
-    }))
-    
-    .pipe(gulp.dest('public/stylesheets'))
-    .pipe(reload({stream: true}));
+              .pipe(plumber())
+              .pipe(stylus({
+                use: [typographic(), nib(), rupture(), axis(),  poststylus([lost(), rucksack(), font()])]
+              }))
+              .pipe(gulp.dest('public/stylesheets'))
+              .pipe(reload({stream: true}));
 });
+
+
 
 gulp.task('bs-reload', function () {
   browserSync.reload();
 });
 
-gulp.task('default', ['browser-sync'], function () {
+gulp.task('default', ['browser-sync', 'scripts', 'css'], function () {
   gulp.watch('**/*.js',   ['scripts', reload]);
-  gulp.watch('public/stylesheets/**/*.styl',  ['styles']);
+  gulp.watch('public/stylesheets/**/*.styl',  ['css']);
   gulp.watch('views/**/*.jade', ['jade-watch']);
 });
 

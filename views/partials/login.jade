@@ -1,22 +1,24 @@
-div(class='lock-size' layout='row' layout-align= 'center right' ng-cloak)
-	md-fab-speed-dial(md-open='false' class='md-scale')
-		md-fab-trigger
-			md-button(class='md-fab md-warn')
-				md-tooltip(md-direction='left') click me to open
-				md-icon(md-svg-src='/static/material-design-icons/navigation/svg/production/ic_menu_24px.svg' style='color: purple;')
-		md-fab-actions
-			md-button(class='md-fab md-mini')
-				md-icon(md-svg-src='/static/material-design-icons/device/svg/design/ic_airplanemode_active_48px.svg')
-		md-fab-actions
-			md-button(class='md-fab md-mini')
-				md-tooltip github
-				a(href='https://github.com/lahaymd')
-					md-icon(md-svg-src='/images/github-logo.svg')		
-md-content.md-padding
-	div(ng-repeat='user in vm.userlist')
-		h1 {{user.fuck}} 
-	{{vm.userlist.length}}
-	form(name='myForm' ng-model='myForm' ng-submit='vm.saveToMongoLab()')
-		input( name='fuck' ng-model='vm.userlist.fuck')
-		button(type='submit') saveToMongoLab
-		button(ng-click='vm.demo()') demo
+div.hero
+	div(class='lock-size' layout='row' layout-align= 'center right' ng-cloak)
+		md-fab-speed-dial(md-open='false' class='md-scale')
+			md-fab-trigger
+				md-button(class='md-fab md-warn')
+					md-tooltip(md-direction='left') click me to open
+					md-icon(md-svg-src='/static/material-design-icons/navigation/svg/production/ic_menu_24px.svg' style='color: purple;')
+			md-fab-actions
+				md-button(class='md-fab md-mini')
+					md-icon(md-svg-src='/static/material-design-icons/device/svg/design/ic_airplanemode_active_48px.svg')
+			md-fab-actions
+				md-button(class='md-fab md-mini')
+					md-tooltip github
+					a(href='https://github.com/lahaymd')
+						md-icon(md-svg-src='/images/github-logo.svg')		
+	md-content.md-padding
+		div(ng-repeat='user in vm.userlist')
+			h1 {{user.fuck}} 
+		{{vm.userlist.length}}
+		form(name='myForm' ng-model='myForm' ng-submit='vm.saveToMongoLab()')
+			input( name='fuck' ng-model='vm.userlist.fuck')
+			button(type='submit') saveToMongoLab
+			button(ng-click='vm.demo()') demo
+

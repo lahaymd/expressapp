@@ -1,3 +1,50 @@
+@import 'typographic'
+@import 'nib'
+@import 'styl/*'
+
+/** 
+   * rucksack 
+   */
+   
+.variable
+	color primary-color
+	background-color secondary-color
+	display block 
+
+
+   
+.autoprefixer
+	display flex
+
+
+
+.nib
+	clearfix()
+
+
+.hero 
+	overflow auto
+	background-image url('/images/wrigley.jpeg')
+	background-size cover
+	background-color red
+	& md-content 
+		background-color transparent
+		
+md-nav-bar
+	background linear-gradient(45deg, red, yellow)
+	height 200px
+	
+.logo
+	background url('/images/graybluelogo.svg') no-repeat
+	size 100px
+	absolute()
+	left 0
+	cursor pointer !important
+	
+
+#hamburger
+	float right
+
 .diff.ng-enter
 	animation slideInRight 1s
 	
@@ -35,7 +82,6 @@ ul
 .loginBox
 	max-width 90%
 	width 500px
-
 
 
 [ui-view].ng-enter
