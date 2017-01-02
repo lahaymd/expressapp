@@ -68,6 +68,7 @@
 }
 .hero {
   overflow: auto;
+  background-image: url("/images/wrigley.jpeg");
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;
