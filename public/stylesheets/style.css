@@ -68,11 +68,9 @@
 }
 .hero {
   overflow: auto;
-  background-image: url("/images/wrigley.jpeg");
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;
-  background-color: #d13f19;
 }
 .hero md-content {
   background-color: transparent;

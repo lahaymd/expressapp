@@ -1,18 +1,19 @@
 div(layout='row' layout-wrap )
 	h1(flex='100' ng-style='{"text-align": "center"}' ) readerboard
-	md-button(ng-click='vm.clear()') clear
+	md-button(flex='100' ng-click='vm.clear()') clear
 	md-input-container(flex='50')
 		label textarea 1
 		textarea(id='one' ng-model='one' ng-change='vm.areaOne()' autofocus) 
 	md-input-container(flex='50')
 		label textarea 2
 		textarea(id='two' ng-model='two' ng-change='vm.areaOne()')
-	div(flex='50' layout='column' layout-align='center center')
-		div(ng-repeat='letter in vm.letters'  )
-			{{letter[0]}}  {{letter[1]}}
-	div(flex='50' layout='column')		
-		div(ng-repeat='letterTwo in vm.lettersTwo' class='diff' )
-			{{letterTwo[0]}} {{letterTwo[1]}}
-	div(flex='50' layout='column' ng-animate-children="true"  )		
+	//- div(flex='50' layout='column' layout-align='center center')
+	//- 	div(ng-repeat='letter in vm.letters'  )
+	//- 		{{letter[0]}}  {{letter[1]}}
+	//- div(flex='50' layout='column')		
+	//- 	div(ng-repeat='letterTwo in vm.lettersTwo' class='diff' )
+	//- 		{{letterTwo[0]}} {{letterTwo[1]}}
+	div(flex='50' layout='row' ng-animate-children="true"  )		
 		div( ng-repeat='(key,value) in vm.letterDifference' class='diff' )
-			h1 {{key}} {{value}}
+			p  {{value}}
+
