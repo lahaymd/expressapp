@@ -16,10 +16,7 @@
     "angular-material": "^1.1.1",
     "angular-messages": "1.5.8",
     "angular-ui-router": "^0.3.2",
-    "animate.css": "^3.5.2"
-    
-  },
-  "devDependencies": {
+    "animate.css": "^3.5.2",
     "gulp-jshint": "^2.0.4",
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
@@ -70,5 +67,9 @@
     "stylus": "latest",
     "typographic": "^2.9.3",
     "util": "latest"
+    
+  },
+  "devDependencies": {
+    
   }
 }
