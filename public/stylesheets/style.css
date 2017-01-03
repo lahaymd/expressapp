@@ -25,6 +25,13 @@
 .lost:nth-child(3n + 1) {
   clear: left;
 }
+.diff div {
+  color: #0074d9;
+  font-size: 44px;
+  margin: 5px;
+  padding: 5px;
+  background-color: #d13f19;
+}
 .rucksack:nth-last-child(n+4), .rucksack:nth-last-child(n+4) ~ .rucksack {
   color: #0074d9;
 }

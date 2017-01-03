@@ -13,7 +13,7 @@ div(layout='row' layout-wrap )
 	//- div(flex='50' layout='column')		
 	//- 	div(ng-repeat='letterTwo in vm.lettersTwo' class='diff' )
 	//- 		{{letterTwo[0]}} {{letterTwo[1]}}
-	div(flex='50' layout='row' ng-animate-children="true"  )		
-		div( ng-repeat='(key,value) in vm.letterDifference' class='diff' )
-			p  {{value}}
-
+	div(class='diff-container' flex='100' layout='row' layout-wrap ng-animate-children='true')
+		div(ng-repeat='letter in vm.letterDifference')
+			div( ng-repeat='(key,value) in letter' class='diff' )
+				div {{key}} : {{value}}
