@@ -13,7 +13,11 @@ div(layout='row' layout-wrap )
 	//- div(flex='50' layout='column')		
 	//- 	div(ng-repeat='letterTwo in vm.lettersTwo' class='diff' )
 	//- 		{{letterTwo[0]}} {{letterTwo[1]}}
-	div(class='diff-container' flex='100' layout='row' layout-wrap ng-animate-children='true')
-		div(ng-repeat='letter in vm.letterDifference')
+	div(class='diff-container' flex='100' layout='row' layout-wrap layout-align='center start' ng-animate-children='true')
+		div(ng-repeat='letter in vm.letterDifference' flex='10')
+			//- {{vm.letterDifference}}
+			//- {{letter}}
 			div( ng-repeat='(key,value) in letter' class='diff' )
-				div {{key}} : {{value}}
+				//- example
+				div.diff(ng-style="{color: vm.isVowel(key)}") {{key}} : {{value}}
+				div(ng-if='vm.highest(vm.letterDifference)') highest number of occurences {{key}}	{{value}}		

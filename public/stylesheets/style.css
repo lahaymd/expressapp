@@ -26,11 +26,9 @@
   clear: left;
 }
 .diff div {
-  color: #0074d9;
   font-size: 44px;
   margin: 5px;
   padding: 5px;
-  background-color: #d13f19;
 }
 .rucksack:nth-last-child(n+4), .rucksack:nth-last-child(n+4) ~ .rucksack {
   color: #0074d9;
@@ -103,11 +101,11 @@ md-nav-bar {
   float: right;
 }
 .diff.ng-enter {
-  -webkit-animation: slideInRight 1s;
-  -moz-animation: slideInRight 1s;
-  -o-animation: slideInRight 1s;
-  -ms-animation: slideInRight 1s;
-  animation: slideInRight 1s;
+  -webkit-animation: bounceIn 1s;
+  -moz-animation: bounceIn 1s;
+  -o-animation: bounceIn 1s;
+  -ms-animation: bounceIn 1s;
+  animation: bounceIn 1s;
 }
 .diff.ng-enter-stagger {
   -webkit-animation-delay: 0.1s;

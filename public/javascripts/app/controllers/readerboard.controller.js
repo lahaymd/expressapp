@@ -3,14 +3,27 @@
 		controller('ReaderboardController',  function($document, $log, $timeout){
 			var vm = this;
 
+			vm.isVowel = function(foo) {
+				var vowel = ['a','e','i','o','u']
+				if(vowel.indexOf(foo) !== -1){
+					
+					return 'green';
+				}else { 
+					return 'pink';
+					
+				}
+			}
+
+
+			vm.highest = function(number){
+				console.log(number);
+				return Math.max(...number);
+			}
 			
 			
 
 			vm.clear = () => $document.find('textarea').val('');
-			// function() {
-			// 	$document.find('textarea').val('');
-				
-			// }
+			
 
 			vm.areaOne = function() {
 				 vm.letters = document.getElementById('one').value.replace(/\s+/g, '').split('').sort()
