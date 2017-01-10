@@ -3,9 +3,16 @@
 		controller('ReaderboardController',  function($document, $log, $timeout){
 			var vm = this;
 
-vm.areaOne = function(one = '',two = '') {
+
+vm.areaOne = function(one,two) {
+
+				vm.copy = function(x){
+	vm.cop = angular.copy(vm.letterDifference,x)
+}
+
 
 	var foo = function(x){
+		x = x || '';
 
 	return	x.replace(/\s+/g, '').split('').sort()
 

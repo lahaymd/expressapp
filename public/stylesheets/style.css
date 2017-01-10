@@ -47,6 +47,15 @@
 /** 
    * rucksack 
    */
+.diff-container {
+  text-align: center;
+}
+.diff-container md-whiteframe {
+  padding: 0 30px 0 30px;
+}
+.bar {
+  background-color: #2ecc40;
+}
 .variable {
   color: #2ecc40;
   background-color: #d13f19;
@@ -72,14 +81,11 @@
   clear: both;
 }
 .hero {
-  overflow: auto;
-  background-image: url("/images/wrigley.jpeg");
+  background-image: url("/images/background.svg");
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;
-}
-.hero md-content {
-  background-color: transparent;
+  backgroun-repeat: no-repeat;
 }
 md-nav-bar {
   background: -webkit-linear-gradient(45deg, #d13f19, #ffdc00);
