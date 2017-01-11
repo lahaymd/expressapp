@@ -1,4 +1,16 @@
 div(layout='row' layout-wrap)
+	md-content.user-intro(flex='100' layout-padding)	Example of 
+					abbr(title='Create Read Update Destroy') CRUD 
+					|operations. You can 
+					i Create 
+					|a user, 
+					i Read 
+					|the data into the view, 
+					i Update 
+					|the 
+					|username and password, and 
+					i Delete 
+					|the user.
 	table(flex='50')
 		thead
 			tr
@@ -11,19 +23,14 @@ div(layout='row' layout-wrap)
 					td.success {{user.username}}
 					td {{user._id}} 
 					td
-						md-button(ng-click='removeUser(user._id)') delete me
+						md-button.md-warn.md-raised(ng-click='removeUser(user._id)') delete me
 					td  
-						md-button
+						md-button.md-accent.md-raised
 							a(ui-sref="users.detail({id : user._id})") Edit
-	md-list
-		md-list-item(ng-repeat='user in userlist' ng-click='null')
-			{{user.username}}
-			{{user.password}}
-
-	div.ui-view(flex='50')
-
-
-
+	//- md-list(flex='50')
+	//- 	md-list-item(ng-repeat='user in userlist' ng-click='null')
+	//- 		{{user.username}}
+	//- 		{{user.password}}
 	md-card(flex='50')		
 		md-card-title Register
 		form( name='myForm' ng-model="myForm" ng-submit='register()') 
@@ -37,5 +44,8 @@ div(layout='row' layout-wrap)
 			md-input-container
 				label(for="password") Password<br />
 				input#password(name="password" ng-model='userlist.password' required) 
-			button(type="submit", value="Create") Create
+			md-button.md-raised.md-primary(type="submit", value="Create") Create
+	
+	div.ui-view(flex='100')
+	
 	md-progress-circular( md-mode="indeterminate" ng-show='isLoading')
