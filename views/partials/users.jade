@@ -31,7 +31,7 @@ div(layout='row' layout-wrap)
 	//- 	md-list-item(ng-repeat='user in userlist' ng-click='null')
 	//- 		{{user.username}}
 	//- 		{{user.password}}
-	md-card(flex='50' flex-sm='100')		
+	md-card(flex='50' flex-sm='100' flex-xs='100')		
 		md-card-title Register
 		form( name='myForm' ng-model="myForm" ng-submit='register()') 
 			div( ng-class="{ 'has-error': myForm.username.$touched && myForm.username.$invalid}")
