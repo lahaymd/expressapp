@@ -64,6 +64,7 @@ md-input-container {
 .nib:before,
 .nib:after {
   content: "";
+<<<<<<< HEAD
   display: table;
 }
 .nib:after {
@@ -79,6 +80,13 @@ md-input-container {
 }
 .hero md-content {
   background-color: transparent;
+=======
+  display: block;
+  clear: both;
+}
+* {
+  box-sizing: border-box;
+>>>>>>> 53b2392cb9b2102de1c2eb08c174c1b76b5eec1c
 }
 md-nav-bar {
   background: -webkit-linear-gradient(45deg, #d13f19, #ffdc00);

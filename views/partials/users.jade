@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 div(layout='row' layout-wrap)
 	table(flex='50')
 		thead
@@ -39,3 +40,9 @@ div(layout='row' layout-wrap)
 				input#password(name="password" ng-model='userlist.password' required) 
 			button(type="submit", value="Create") Create
 	md-progress-circular( md-mode="indeterminate" ng-show='isLoading')
+=======
+ul
+  li(ng-repeat= 'user in userlist')
+    a(ui-sref="users.detail({id : user._id})") {{user.username}} {{user._id}}
+ui-view
+>>>>>>> 53b2392cb9b2102de1c2eb08c174c1b76b5eec1c
