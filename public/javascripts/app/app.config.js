@@ -19,6 +19,12 @@ function config($stateProvider, $urlRouterProvider, $locationProvider) {
            controller: 'LoginController',
            controllerAs: 'vm'
         }).
+       state('hireme', {
+          url: '/hireme',
+          templateUrl: '/partials/hireme',
+          controller: 'HireMeController'
+          // controllerAs: '$ctrl'
+        }).
         state('users', {
           url: '/users',
           templateUrl: '/partials/users',

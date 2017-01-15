@@ -42,6 +42,9 @@
 /** 
    * rucksack 
    */
+md-input-container {
+  display: block !important;
+}
 .variable {
   color: #2ecc40;
   background-color: #d13f19;
