@@ -17,12 +17,23 @@ var mongolab = require('./routes/mongolab.api');
 var env = process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 var app = express();
 
+// <<<<<<< HEAD
 if(env === 'development'){
 mongoose.connect('localhost:27017/mongoose');
 } else {
 mongoose.connect('mongodb://lahaymd:zz040577@ds127998.mlab.com:27998/mikelahay');
 }
 
+// =======
+// mongoose.connect('127.0.0.1:27017/mongoose');
+
+
+// var routes = require('./routes/index');
+// var users = require('./routes/users');
+// var sessions = require('./routes/session');
+
+// var app = express();
+// >>>>>>> 53b2392cb9b2102de1c2eb08c174c1b76b5eec1c
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -50,6 +61,7 @@ app.use(cookieParser('anystringoftext'));
 
 
 // Give Views/Layouts direct access to session data.
+// <<<<<<< HEAD
   // app.use(function(req, res, next){
   //   res.locals.session = req.session.user;
   //   next();
@@ -61,6 +73,21 @@ app.get('/', routes.index);
 app.get('/partials/:name', routes.partials);
 app.get('/partials/:name/:id', routes.nested);
 app.get('*', routes.index);
+// =======
+//   app.use(function(req, res, next){
+//     res.locals.session = req.session.user;
+//     next();
+//   });
+
+// //app.use(require('stylus').middleware(__dirname + '/public'));
+// app.use(express.static(path.join(__dirname, 'public')));
+
+
+// app.use('/', routes);
+// app.use('/users', users);
+// app.use('/session', sessions);
+
+// >>>>>>> 53b2392cb9b2102de1c2eb08c174c1b76b5eec1c
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
