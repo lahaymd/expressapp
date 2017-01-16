@@ -1,3 +1,19 @@
-h1 Give me all your money!!!
+form(name='hireme' ng-model='hireme' ng-submit='hired()' )
 
-{{$ctrl.name}}
+	md-input-container
+		label(name='firstname') First Name
+		input(type='text' name='firstname' ng-model='hiremelist.firstname')
+	md-input-container
+		label(name='lastname') Last Name
+		input(type='text' name='lastname' ng-model='hiremelist.lastname')
+	md-input-container
+		label(name='email') Email
+		input(type='text' name='email' ng-model='hiremelist.email')
+	md-input-container
+		label(name='phone') Phone
+		input(type='text' name='phone' ng-model='hiremelist.phone')
+	md-input-container
+		label(name='message') Message
+		input(type='text' name='message' ng-model='hiremelist.message')
+	md-button.md-primary.md-raised(type='submit') Send
+	//- div {{$ctrl.name}}
