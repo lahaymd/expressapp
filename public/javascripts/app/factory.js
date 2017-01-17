@@ -19,7 +19,8 @@ angular.module('myApp').factory('AuthService',
       update: update,
       getMongoLab: getMongoLab,
       postToMongoLab: postToMongoLab,
-      hire: hire
+      hire: hire,
+      getHired: getHired
     };
 
     return service;
@@ -66,6 +67,18 @@ angular.module('myApp').factory('AuthService',
     function getUsers() {
       var deferred = $q.defer();
       $http.get('/api/users')
+        .success(function(users) {
+          deferred.resolve(users)
+        })
+        .error(function(error) {
+          deferred.reject(error +'!')
+        })
+        return deferred.promise;
+    }
+
+        function getHired() {
+      var deferred = $q.defer();
+      $http.get('/api/hireme')
         .success(function(users) {
           deferred.resolve(users)
         })
@@ -165,7 +178,7 @@ angular.module('myApp').factory('AuthService',
             deferred.resolve(response);
          
         }).error (function(response) {
-          defer.reject(response)
+          deferred.reject(response)
         });
         
 

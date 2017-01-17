@@ -16,4 +16,5 @@ form(name='hireme' ng-model='hireme' ng-submit='hired()' )
 		label(name='message') Message
 		input(type='text' name='message' ng-model='hiremelist.message')
 	md-button.md-primary.md-raised(type='submit') Send
-	//- div {{$ctrl.name}}
+div(ng-repeat='hire in hiremelist')
+	{{hire.firstname}}
