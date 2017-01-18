@@ -15,6 +15,7 @@ for(var i =1; i <= 100; i++){
    // alert(idx);
    if(idx === 0){$scope.begin = 0}
    $scope.begin = idx  * $scope.displayAmount
+    
  }
 
 
