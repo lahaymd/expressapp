@@ -3,10 +3,10 @@ div(layout='row' layout-wrap )
 	md-button(flex='100' ng-click='vm.clear()') clear
 	md-input-container(flex='50')
 		label textarea 1
-		textarea(id='one' ng-model='one' ng-change='vm.areaOne(one,two); vm.copy({{vm.letterDifference}})' autofocus) 
+		textarea(id='one' ng-model='one' ng-change='vm.areaOne(one,two)' autofocus) 
 	md-input-container(flex='50')
 		label textarea 2
-		textarea(id='two' ng-model='two' ng-change='vm.copy({{vm.letterDifference}}); vm.areaOne(one,two)')
+		textarea(id='two' ng-model='two' ng-change=' vm.areaOne(one,two)')
 	//- div(flex='50' layout='column' layout-align='center center')
 	//- 	div(ng-repeat='letter in vm.letters'  )
 	//- 		{{letter[0]}}  {{letter[1]}}

@@ -2,13 +2,43 @@
 	angular.module('myApp').
 		controller('UserController', ['$scope', '$stateParams', 'AuthService', '$location', '$window',  function($scope, $stateParams, AuthService, $location, $window ) {
 
- $scope.userlist = {};
+ // $scope.userlist = {};
+// $scope.displayAmount = 3;
+$scope.numbers = [];
 
+for(var i =1; i <= 100; i++){
+  $scope.numbers.push(i)
+}
+
+ $scope.displayPagination =function(idx) {
+  // fetchUsers();
+   // alert(idx);
+   if(idx === 0){$scope.begin = 0}
+   $scope.begin = idx  * $scope.displayAmount
+ }
+
+
+
+ $scope.lists = ['username', 'id', 'password']
+
+    $scope.sortBy = function(property) {
+
+      $scope.propertyName = property;
+      // return property;
+    }
+
+    $scope.limitDisplayedTo = function(prop) {
+             $scope.displayAmount = prop;
+             $scope.limit = Math.ceil($scope.userlistLength / $scope.displayAmount);
+           }
 
 var fetchUsers= function() {
                   AuthService.getUsers()
                   .then(function(users) {
                     $scope.userlist = users;
+                    $scope.userlistLength = users.length;
+                    $scope.displayAmount = $scope.displayAmount || 3;
+                    $scope.limit = Math.ceil($scope.userlistLength / $scope.displayAmount);
                     console.log(users)
                   }, function(error) {
                     console.log(error)
@@ -29,7 +59,9 @@ fetchUsers();
                               console.log($scope.userlist)
                               console.log(id);
                               var index = $scope.userlist.findIndex(x=> x._id == id);
-                              $scope.userlist.splice(index,1)
+                              $scope.userlist.splice(index,1);
+                              $scope.userlistLength = $scope.userlist.length;
+                              $scope.limit = Math.ceil($scope.userlistLength / $scope.displayAmount);
                               console.log('promise returned');
                               $scope.isLoading= false;
                             
@@ -82,6 +114,8 @@ $scope.register = function () {
         .then(function (newUser) {
           console.log(newUser)
           $scope.userlist.push(newUser);
+          $scope.userlistLength = $scope.userlist.length;
+          $scope.limit = Math.ceil($scope.userlistLength / $scope.displayAmount);
           angular.element(document.querySelectorAll('input')).val('');
           $scope.isLoading= false;
           // $scope.registerForm = data;

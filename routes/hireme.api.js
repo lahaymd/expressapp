@@ -6,7 +6,7 @@ var mongoose = require('mongoose');
 router.post('/', function(req, res) {
 	HireMe.create({
 		firstname:req.body.firstname,
-		lastName: req.body.lastname,
+		lastname: req.body.lastname,
 		email: req.body.email,
 		phone: req.body.phone,
 		message: req.body.message

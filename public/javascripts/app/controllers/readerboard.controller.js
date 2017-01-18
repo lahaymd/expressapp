@@ -6,9 +6,9 @@
 
 vm.areaOne = function(one,two) {
 
-				vm.copy = function(x){
-	vm.cop = angular.copy(vm.letterDifference,x)
-}
+// 				vm.copy = function(x){
+// 	vm.cop = angular.copy(vm.letterDifference,x)
+// }
 
 	vm.clear = () => {
 		$document.find('textarea').val('');
